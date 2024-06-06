@@ -14,6 +14,8 @@
 		927744592C1210CC00895927 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 927744572C1210CC00895927 /* LaunchScreen.storyboard */; };
 		927744622C12149A00895927 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927744612C12149A00895927 /* LoginViewModel.swift */; };
 		927744642C1214EF00895927 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927744632C1214EF00895927 /* Bindable.swift */; };
+		9277446F2C121BEA00895927 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277446E2C121BEA00895927 /* LoginView.swift */; };
+		927744712C121EA200895927 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927744702C121EA200895927 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		9277445A2C1210CC00895927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		927744612C12149A00895927 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		927744632C1214EF00895927 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		9277446E2C121BEA00895927 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		927744702C121EA200895927 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +62,7 @@
 		9277444B2C1210CB00895927 /* Cadastro */ = {
 			isa = PBXGroup;
 			children = (
-				927744502C1210CB00895927 /* LoginViewController.swift */,
-				927744612C12149A00895927 /* LoginViewModel.swift */,
-				927744632C1214EF00895927 /* Bindable.swift */,
+				927744652C121B6900895927 /* App */,
 				927744602C12139200895927 /* Resources */,
 			);
 			path = Cadastro;
@@ -76,6 +78,82 @@
 				9277445A2C1210CC00895927 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		927744652C121B6900895927 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				927744682C121B7500895927 /* Model */,
+				927744692C121B7700895927 /* Network */,
+				927744672C121B7400895927 /* Screens */,
+				9277446A2C121B7A00895927 /* Utils */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		927744662C121B7200895927 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9277446D2C121BBC00895927 /* Controller */,
+				9277446C2C121BBB00895927 /* View */,
+				9277446B2C121BB500895927 /* ViewModel */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		927744672C121B7400895927 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				927744662C121B7200895927 /* Login */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		927744682C121B7500895927 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		927744692C121B7700895927 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9277446A2C121B7A00895927 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				927744632C1214EF00895927 /* Bindable.swift */,
+				927744702C121EA200895927 /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9277446B2C121BB500895927 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				927744612C12149A00895927 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9277446C2C121BBB00895927 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9277446E2C121BEA00895927 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9277446D2C121BBC00895927 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				927744502C1210CB00895927 /* LoginViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,11 +226,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9277446F2C121BEA00895927 /* LoginView.swift in Sources */,
 				927744642C1214EF00895927 /* Bindable.swift in Sources */,
 				927744622C12149A00895927 /* LoginViewModel.swift in Sources */,
 				927744512C1210CB00895927 /* LoginViewController.swift in Sources */,
 				9277444D2C1210CB00895927 /* AppDelegate.swift in Sources */,
 				9277444F2C1210CB00895927 /* SceneDelegate.swift in Sources */,
+				927744712C121EA200895927 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,18 +9,28 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    let loginView = LoginView()
     let viewModel = LoginViewModel()
+    
+    override func loadView() {
+        super.loadView()
+        view = loginView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavBar()
+        setDelegateAndDataSources()
         handleStates()
         viewModel.loadData()
     }
     
     private func setNavBar() {
         title = "Login"
-        view.backgroundColor = .systemBackground
+    }
+    
+    private func setDelegateAndDataSources() {
+        loginView.delegate = self
     }
     
     func handleStates() {
@@ -46,5 +56,19 @@ class LoginViewController: UIViewController {
     
     func showErrorState() {
         
+    }
+}
+
+extension LoginViewController: LoginViewDelegate {
+    func verificaCamposDeEmailESenha() {
+        if let email = loginView.emailTextField.text, let password = loginView.passwordTextField.text {
+            loginView.loginButton.isEnabled = !email.isEmpty && !password.isEmpty
+        } else {
+            loginView.loginButton.isEnabled = true
+        }
+    }
+    
+    func naoTemConta() {
+        //TODO: criar outra tela, e quando clicar no botão vai pra outra tela
     }
 }

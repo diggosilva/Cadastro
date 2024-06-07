@@ -32,7 +32,7 @@ class SignUpConfirmPasswordView: UIView {
     lazy var confirmPasswordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Digite novamente a senha..."
+        textField.placeholder = "Digite novamente sua senha..."
         textField.clearButtonMode = .whileEditing
         textField.autocapitalizationType = .none
         textField.isSecureTextEntry = true
@@ -112,4 +112,3 @@ class SignUpConfirmPasswordView: UIView {
         ])
     }
 }
-

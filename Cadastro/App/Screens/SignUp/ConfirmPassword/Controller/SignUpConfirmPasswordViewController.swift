@@ -41,6 +41,33 @@ class SignUpConfirmPasswordViewController: UIViewController {
     }
     
     private func setDelegateAndDataSources() {
-//        signUpConfirmPasswordView.delegate = self
+        signUpConfirmPasswordView.delegate = self
+    }
+    
+    func alertConfirmPassword() {
+        let alert = UIAlertController(title: "⚠️ Atenção!", message: "Erro ao confirmar senha: Sua senha deve ser a mesma que você digitou anteriormente", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Entendi", style: .default)
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
+}
+
+extension SignUpConfirmPasswordViewController: SignUpConfirmPasswordViewDelegate {
+    func verificaCampoConfirmarSenha() {
+        if let confirmPassword = signUpConfirmPasswordView.confirmPasswordTextField.text {
+            signUpConfirmPasswordView.nextButton.isEnabled = !confirmPassword.isEmpty
+        } else {
+            signUpConfirmPasswordView.nextButton.isEnabled = true
+            alertConfirmPassword()
+        }
+    }
+    
+    func didTapNextButton() {
+        //TODO: criar tela de Nome, e avançar quando clicar
+        if let confirmPassword = signUpConfirmPasswordView.confirmPasswordTextField.text {
+            viewModel.enviarEmailSenhaEConfirmarSenhaPraProximaTela(senha: viewModel.password, confirmarSenha: confirmPassword)
+        } else {
+            print("Falha ao cadastrar Email, Senha e Confirmação de Senha!")
+        }
     }
 }

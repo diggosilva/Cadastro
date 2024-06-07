@@ -21,6 +21,6 @@ class SignUpEmailViewModel {
     
     func enviarEmailPraProximaTela(email: String) {
         self.email = email
-        print("Email cadastrado: \(self.email)")
+        print("DEBUG: Email cadastrado: \(self.email)")
     }
 }

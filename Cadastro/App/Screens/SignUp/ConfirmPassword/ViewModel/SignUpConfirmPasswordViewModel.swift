@@ -27,12 +27,12 @@ class SignUpConfirmPasswordViewModel {
         self.confirmaSenha = confirmarSenha
         
         if confirmarSenha == senha {
-            print("Email cadastrado: \(self.email)")
-            print("Senha cadastrada: \(self.password)")
-            print("Confirmar Senha cadastrada: \(self.password)")
-            print("DEBUG: \(Cadastro(email: email, senha: senha))")
+            print("DEBUG: Email cadastrado: \(self.email)")
+            print("DEBUG: Senha cadastrada: \(self.password)")
+            print("DEBUG: Confirmar Senha cadastrada: \(self.password)")
+            print("DEBUG: \(Cadastro(email: email, senha: senha, confirmaSenha: confirmarSenha))")
         } else {
-            print("Erro ao confirmar senha: A senha deve ser a mesma que você digitou anteriormente")
+            print("DEBUG: Erro ao confirmar senha: A senha deve ser a mesma que você digitou anteriormente")
         }
     }
 }

@@ -34,6 +34,7 @@ class LoginView: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Digite seu email..."
         textField.clearButtonMode = .whileEditing
+        textField.autocapitalizationType = .none
         textField.keyboardType = .emailAddress
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField

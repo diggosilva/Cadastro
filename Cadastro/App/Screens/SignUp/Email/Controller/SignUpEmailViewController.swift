@@ -10,7 +10,7 @@ import UIKit
 class SignUpEmailViewController: UIViewController {
     
     let signUpEmailView = SignUpEmailView()
-    var viewModel: SignUpEmailViewModel
+    let viewModel: SignUpEmailViewModel
     
     init() {
         self.viewModel = SignUpEmailViewModel()
@@ -60,9 +60,10 @@ extension SignUpEmailViewController: SignUpEmailViewDelegate {
     }
     
     func didTapNextButton() {
-        //TODO: criar tela de senha, e avançar quando clicar
         if let email = signUpEmailView.emailTextField.text {
-            viewModel.enviarEmailPraProximaTela(email: email.lowercased())
+            viewModel.enviarEmailPraProximaTela(email: email)
+            let signUpPasswordVC = SignUpPasswordViewController(email: email)
+            navigationController?.pushViewController(signUpPasswordVC, animated: true)
         } else {
             print("Falha ao cadastrar email!")
         }

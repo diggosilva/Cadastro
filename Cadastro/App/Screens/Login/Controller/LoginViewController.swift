@@ -25,6 +25,10 @@ class LoginViewController: UIViewController {
         viewModel.loadData()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     private func setNavBar() {
         title = "Login"
     }
@@ -69,6 +73,7 @@ extension LoginViewController: LoginViewDelegate {
     }
     
     func naoTemConta() {
-        //TODO: criar outra tela, e quando clicar no botão vai pra outra tela
+        let signUpEmailVC = SignUpEmailViewController()
+        navigationController?.pushViewController(signUpEmailVC, animated: true)
     }
 }

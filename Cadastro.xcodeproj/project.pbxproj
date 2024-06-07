@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9251D4892C13627C0033863F /* Cadastro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D4882C13627C0033863F /* Cadastro.swift */; };
+		9251D48B2C1362B50033863F /* SignUpEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D48A2C1362B50033863F /* SignUpEmailViewModel.swift */; };
 		9277444D2C1210CB00895927 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277444C2C1210CB00895927 /* AppDelegate.swift */; };
 		9277444F2C1210CB00895927 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277444E2C1210CB00895927 /* SceneDelegate.swift */; };
 		927744512C1210CB00895927 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927744502C1210CB00895927 /* LoginViewController.swift */; };
@@ -16,9 +18,13 @@
 		927744642C1214EF00895927 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927744632C1214EF00895927 /* Bindable.swift */; };
 		9277446F2C121BEA00895927 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277446E2C121BEA00895927 /* LoginView.swift */; };
 		927744712C121EA200895927 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927744702C121EA200895927 /* Extensions.swift */; };
+		927744772C12471700895927 /* SignUpEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927744762C12471700895927 /* SignUpEmailViewController.swift */; };
+		927744792C1247E500895927 /* SignUpEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927744782C1247E500895927 /* SignUpEmailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9251D4882C13627C0033863F /* Cadastro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cadastro.swift; sourceTree = "<group>"; };
+		9251D48A2C1362B50033863F /* SignUpEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailViewModel.swift; sourceTree = "<group>"; };
 		927744492C1210CB00895927 /* Cadastro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cadastro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9277444C2C1210CB00895927 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9277444E2C1210CB00895927 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +36,8 @@
 		927744632C1214EF00895927 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		9277446E2C121BEA00895927 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		927744702C121EA200895927 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		927744762C12471700895927 /* SignUpEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailViewController.swift; sourceTree = "<group>"; };
+		927744782C1247E500895927 /* SignUpEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9251D4872C1361660033863F /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				927744752C12458600895927 /* Controller */,
+				927744742C12458500895927 /* View */,
+				927744732C12458400895927 /* ViewModel */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
 		927744402C1210CB00895927 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				927744662C121B7200895927 /* Login */,
+				927744722C12457600895927 /* SignUp */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -112,6 +131,7 @@
 		927744682C121B7500895927 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9251D4882C13627C0033863F /* Cadastro.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,6 +172,38 @@
 			isa = PBXGroup;
 			children = (
 				927744502C1210CB00895927 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		927744722C12457600895927 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				9251D4872C1361660033863F /* Email */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		927744732C12458400895927 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9251D48A2C1362B50033863F /* SignUpEmailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		927744742C12458500895927 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				927744782C1247E500895927 /* SignUpEmailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		927744752C12458600895927 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				927744762C12471700895927 /* SignUpEmailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -231,7 +283,11 @@
 				927744622C12149A00895927 /* LoginViewModel.swift in Sources */,
 				927744512C1210CB00895927 /* LoginViewController.swift in Sources */,
 				9277444D2C1210CB00895927 /* AppDelegate.swift in Sources */,
+				927744772C12471700895927 /* SignUpEmailViewController.swift in Sources */,
+				9251D4892C13627C0033863F /* Cadastro.swift in Sources */,
+				9251D48B2C1362B50033863F /* SignUpEmailViewModel.swift in Sources */,
 				9277444F2C1210CB00895927 /* SceneDelegate.swift in Sources */,
+				927744792C1247E500895927 /* SignUpEmailView.swift in Sources */,
 				927744712C121EA200895927 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

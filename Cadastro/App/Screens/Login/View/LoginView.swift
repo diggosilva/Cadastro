@@ -8,8 +8,8 @@
 import UIKit
 
 protocol LoginViewDelegate: AnyObject {
-    func naoTemConta()
     func verificaCamposDeEmailESenha()
+    func naoTemConta()
 }
 
 class LoginView: UIView {
@@ -34,6 +34,7 @@ class LoginView: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Digite seu email..."
         textField.clearButtonMode = .whileEditing
+        textField.keyboardType = .emailAddress
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()

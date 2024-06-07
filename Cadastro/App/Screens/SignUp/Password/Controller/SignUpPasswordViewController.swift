@@ -64,10 +64,10 @@ extension SignUpPasswordViewController: SignUpPasswordViewDelegate {
         //TODO: criar tela de Confirmar Senha, e avançar quando clicar
         if let password = signUpPasswordView.passwordTextField.text {
             viewModel.enviarEmailESenhaPraProximaTela(senha: password)
-//            let confirmPasswordVC = signUpConfirmPasswordViewController()
-//            navigationController?.pushViewController(confirmPasswordVC, animated: true)
+            let confirmPasswordVC = SignUpConfirmPasswordViewController(email: viewModel.email, password: password)
+            navigationController?.pushViewController(confirmPasswordVC, animated: true)
         } else {
-            print("Falha ao cadastrar Email e Senha!")
+            print("Falha ao cadastrar Email, Senha e Confirmação de Senha!")
         }
     }
 }

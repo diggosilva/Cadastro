@@ -1,5 +1,5 @@
 //
-//  SignUpPasswordViewModel.swift
+//  PasswordViewModel.swift
 //  Cadastro
 //
 //  Created by Diggo Silva on 07/06/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SignUpPasswordViewModel {
+class PasswordViewModel {
     var cadastro: Cadastro?
     var email: String = ""
     var senha: String = ""

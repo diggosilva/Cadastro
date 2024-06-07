@@ -1,5 +1,5 @@
 //
-//  SignUpView.swift
+//  EmailView.swift
 //  Cadastro
 //
 //  Created by Diggo Silva on 06/06/24.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol SignUpEmailViewDelegate: AnyObject {
+protocol EmailViewDelegate: AnyObject {
     func verificaCampoEmail()
     func didTapNextButton()
     func jaTemConta()
 }
 
-class SignUpEmailView: UIView {
+class EmailView: UIView {
     lazy var logoImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +66,7 @@ class SignUpEmailView: UIView {
         return button
     }()
     
-    weak var delegate: SignUpEmailViewDelegate?
+    weak var delegate: EmailViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)

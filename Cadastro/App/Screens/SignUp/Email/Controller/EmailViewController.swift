@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  EmailViewController.swift
 //  Cadastro
 //
 //  Created by Diggo Silva on 06/06/24.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-class SignUpEmailViewController: UIViewController {
+class EmailViewController: UIViewController {
     
-    let signUpEmailView = SignUpEmailView()
-    let viewModel: SignUpEmailViewModel
+    let emailView = EmailView()
+    let viewModel: EmailViewModel
     
     init() {
-        self.viewModel = SignUpEmailViewModel()
+        self.viewModel = EmailViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
     init(cadastro: Cadastro) {
-        self.viewModel = SignUpEmailViewModel(cadastro: cadastro)
+        self.viewModel = EmailViewModel(cadastro: cadastro)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,7 +28,7 @@ class SignUpEmailViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        view = signUpEmailView
+        view = emailView
     }
     
     override func viewDidLoad() {
@@ -46,24 +46,24 @@ class SignUpEmailViewController: UIViewController {
     }
     
     private func setDelegateAndDataSources() {
-        signUpEmailView.delegate = self
+        emailView.delegate = self
     }
 }
 
-extension SignUpEmailViewController: SignUpEmailViewDelegate {
+extension EmailViewController: EmailViewDelegate {
     func verificaCampoEmail() {
-        if let email = signUpEmailView.emailTextField.text {
-            signUpEmailView.nextButton.isEnabled = !email.isEmpty
+        if let email = emailView.emailTextField.text {
+            emailView.nextButton.isEnabled = !email.isEmpty
         } else {
-            signUpEmailView.nextButton.isEnabled = true
+            emailView.nextButton.isEnabled = true
         }
     }
     
     func didTapNextButton() {
-        if let email = signUpEmailView.emailTextField.text {
+        if let email = emailView.emailTextField.text {
             viewModel.enviarEmailPraProximaTela(email: email)
-            let signUpPasswordVC = SignUpPasswordViewController(email: email)
-            navigationController?.pushViewController(signUpPasswordVC, animated: true)
+            let passwordVC = PasswordViewController(email: email)
+            navigationController?.pushViewController(passwordVC, animated: true)
         } else {
             print("Falha ao cadastrar email!")
         }

@@ -1,5 +1,5 @@
 //
-//  SignUpConfirmPasswordView.swift
+//  ConfirmPasswordView.swift
 //  Cadastro
 //
 //  Created by Diggo Silva on 07/06/24.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol SignUpConfirmPasswordViewDelegate: AnyObject {
+protocol ConfirmPasswordViewDelegate: AnyObject {
     func verificaCampoConfirmarSenha()
     func didTapNextButton()
 }
 
-class SignUpConfirmPasswordView: UIView {
+class ConfirmPasswordView: UIView {
     lazy var logoImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +56,7 @@ class SignUpConfirmPasswordView: UIView {
         return button
     }()
     
-    weak var delegate: SignUpConfirmPasswordViewDelegate?
+    weak var delegate: ConfirmPasswordViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)

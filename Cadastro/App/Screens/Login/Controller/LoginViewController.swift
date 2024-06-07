@@ -73,7 +73,7 @@ extension LoginViewController: LoginViewDelegate {
     }
     
     func naoTemConta() {
-        let signUpEmailVC = SignUpEmailViewController()
+        let signUpEmailVC = EmailViewController()
         navigationController?.pushViewController(signUpEmailVC, animated: true)
     }
 }

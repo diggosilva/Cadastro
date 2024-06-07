@@ -1,5 +1,5 @@
 //
-//  SignUpConfirmPasswordViewController.swift
+//  ConfirmPasswordViewController.swift
 //  Cadastro
 //
 //  Created by Diggo Silva on 07/06/24.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class SignUpConfirmPasswordViewController: UIViewController {
+class ConfirmPasswordViewController: UIViewController {
     
-    let signUpConfirmPasswordView = SignUpConfirmPasswordView()
-    let viewModel: SignUpConfirmPasswordViewModel
+    let confirmPasswordView = ConfirmPasswordView()
+    let viewModel: ConfirmPasswordViewModel
     
     init(email: String, password: String) {
-        self.viewModel = SignUpConfirmPasswordViewModel(email: email, password: password)
+        self.viewModel = ConfirmPasswordViewModel(email: email, password: password)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -23,7 +23,7 @@ class SignUpConfirmPasswordViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        view = signUpConfirmPasswordView
+        view = confirmPasswordView
     }
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class SignUpConfirmPasswordViewController: UIViewController {
     }
     
     private func setDelegateAndDataSources() {
-        signUpConfirmPasswordView.delegate = self
+        confirmPasswordView.delegate = self
     }
     
     func alertConfirmPassword() {
@@ -52,19 +52,19 @@ class SignUpConfirmPasswordViewController: UIViewController {
     }
 }
 
-extension SignUpConfirmPasswordViewController: SignUpConfirmPasswordViewDelegate {
+extension ConfirmPasswordViewController: ConfirmPasswordViewDelegate {
     func verificaCampoConfirmarSenha() {
-        if let confirmPassword = signUpConfirmPasswordView.confirmPasswordTextField.text {
-            signUpConfirmPasswordView.nextButton.isEnabled = !confirmPassword.isEmpty
+        if let confirmPassword = confirmPasswordView.confirmPasswordTextField.text {
+            confirmPasswordView.nextButton.isEnabled = !confirmPassword.isEmpty
         } else {
-            signUpConfirmPasswordView.nextButton.isEnabled = true
+            confirmPasswordView.nextButton.isEnabled = true
             alertConfirmPassword()
         }
     }
     
     func didTapNextButton() {
         //TODO: criar tela de Nome, e avançar quando clicar
-        if let confirmPassword = signUpConfirmPasswordView.confirmPasswordTextField.text {
+        if let confirmPassword = confirmPasswordView.confirmPasswordTextField.text {
             viewModel.enviarEmailSenhaEConfirmarSenhaPraProximaTela(senha: viewModel.password, confirmarSenha: confirmPassword)
         } else {
             print("Falha ao cadastrar Email, Senha e Confirmação de Senha!")

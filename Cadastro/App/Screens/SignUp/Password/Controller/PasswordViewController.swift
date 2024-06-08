@@ -1,5 +1,5 @@
 //
-//  SignUpPasswordViewController.swift
+//  PasswordViewController.swift
 //  Cadastro
 //
 //  Created by Diggo Silva on 07/06/24.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-class SignUpPasswordViewController: UIViewController {
+class PasswordViewController: UIViewController {
     
-    let signUpPasswordView = SignUpPasswordView()
-    let viewModel: SignUpPasswordViewModel
+    let passwordView = PasswordView()
+    let viewModel: PasswordViewModel
     
     init(email: String) {
-        self.viewModel = SignUpPasswordViewModel(email: email)
+        self.viewModel = PasswordViewModel(email: email)
         super.init(nibName: nil, bundle: nil)
     }
     
     init(cadastro: Cadastro) {
-        self.viewModel = SignUpPasswordViewModel(cadastro: cadastro)
+        self.viewModel = PasswordViewModel(cadastro: cadastro)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,7 +28,7 @@ class SignUpPasswordViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        view = signUpPasswordView
+        view = passwordView
     }
     
     override func viewDidLoad() {
@@ -46,26 +46,25 @@ class SignUpPasswordViewController: UIViewController {
     }
     
     private func setDelegateAndDataSources() {
-        signUpPasswordView.delegate = self
+        passwordView.delegate = self
     }
     
 }
 
-extension SignUpPasswordViewController: SignUpPasswordViewDelegate {
+extension PasswordViewController: PasswordViewDelegate {
     func verificaCampoSenha() {
-        if let password = signUpPasswordView.passwordTextField.text {
-            signUpPasswordView.nextButton.isEnabled = !password.isEmpty
+        if let password = passwordView.passwordTextField.text {
+            passwordView.nextButton.isEnabled = !password.isEmpty
         } else {
-            signUpPasswordView.nextButton.isEnabled = true
+            passwordView.nextButton.isEnabled = true
         }
     }
     
     func didTapNextButton() {
-        //TODO: criar tela de Confirmar Senha, e avançar quando clicar
-        if let password = signUpPasswordView.passwordTextField.text {
+        if let password = passwordView.passwordTextField.text {
             viewModel.enviarEmailESenhaPraProximaTela(senha: password)
-//            let confirmPasswordVC = signUpConfirmPasswordViewController()
-//            navigationController?.pushViewController(confirmPasswordVC, animated: true)
+            let confirmPasswordVC = ConfirmPasswordViewController(email: viewModel.email, password: password)
+            navigationController?.pushViewController(confirmPasswordVC, animated: true)
         } else {
             print("Falha ao cadastrar Email e Senha!")
         }

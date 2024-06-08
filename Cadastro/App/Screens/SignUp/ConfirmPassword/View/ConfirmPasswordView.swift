@@ -1,19 +1,18 @@
 //
-//  SignUpView.swift
+//  ConfirmPasswordView.swift
 //  Cadastro
 //
-//  Created by Diggo Silva on 06/06/24.
+//  Created by Diggo Silva on 07/06/24.
 //
 
 import UIKit
 
-protocol SignUpEmailViewDelegate: AnyObject {
-    func verificaCampoEmail()
+protocol ConfirmPasswordViewDelegate: AnyObject {
+    func verificaCampoConfirmarSenha()
     func didTapNextButton()
-    func jaTemConta()
 }
 
-class SignUpEmailView: UIView {
+class ConfirmPasswordView: UIView {
     lazy var logoImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -22,20 +21,21 @@ class SignUpEmailView: UIView {
         return image
     }()
     
-    lazy var emailImage: UIImageView = {
+    lazy var confirmPasswordImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "envelope")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+        image.image = UIImage(systemName: "lock.fill")?.withTintColor(.label, renderingMode: .alwaysOriginal)
         image.contentMode = .scaleAspectFit
         return image
     }()
     
-    lazy var emailTextField: UITextField = {
+    lazy var confirmPasswordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Digite seu email..."
+        textField.placeholder = "Digite novamente sua senha..."
         textField.clearButtonMode = .whileEditing
         textField.autocapitalizationType = .none
+        textField.isSecureTextEntry = true
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
@@ -56,17 +56,7 @@ class SignUpEmailView: UIView {
         return button
     }()
     
-    lazy var haveAnAccountButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        let attributedTitle = NSMutableAttributedString(string: "Já tenho uma conta!  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.link])
-        attributedTitle.append(NSAttributedString(string: "Logar!", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.link]))
-        button.setAttributedTitle(attributedTitle, for: .normal)
-        button.addTarget(self, action: #selector(haveAnAccountTapped), for: .touchUpInside)
-        return button
-    }()
-    
-    weak var delegate: SignUpEmailViewDelegate?
+    weak var delegate: ConfirmPasswordViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -78,15 +68,11 @@ class SignUpEmailView: UIView {
     }
     
     @objc private func textFieldDidChange() {
-        delegate?.verificaCampoEmail()
+        delegate?.verificaCampoConfirmarSenha()
     }
     
     @objc private func nextButtonTapped() {
         delegate?.didTapNextButton()
-    }
-    
-    @objc private func haveAnAccountTapped() {
-        delegate?.jaTemConta()
     }
     
     private func setupView() {
@@ -96,7 +82,7 @@ class SignUpEmailView: UIView {
     }
     
     private func setHierarchy () {
-        addSubviews([logoImage, emailImage, emailTextField, divider1, nextButton, haveAnAccountButton])
+        addSubviews([logoImage, confirmPasswordImage, confirmPasswordTextField, divider1, nextButton])
     }
     
     private func setConstraints() {
@@ -106,26 +92,23 @@ class SignUpEmailView: UIView {
             logoImage.widthAnchor.constraint(equalToConstant: 200),
             logoImage.heightAnchor.constraint(equalTo: logoImage.widthAnchor),
     
-            emailImage.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 40),
-            emailImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            emailImage.widthAnchor.constraint(equalToConstant: 30),
-            emailImage.heightAnchor.constraint(equalTo: emailImage.widthAnchor),
+            confirmPasswordImage.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 40),
+            confirmPasswordImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            confirmPasswordImage.widthAnchor.constraint(equalToConstant: 30),
+            confirmPasswordImage.heightAnchor.constraint(equalTo: confirmPasswordImage.widthAnchor),
             
-            emailTextField.centerYAnchor.constraint(equalTo: emailImage.centerYAnchor),
-            emailTextField.leadingAnchor.constraint(equalTo: emailImage.trailingAnchor, constant: 10),
-            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            confirmPasswordTextField.centerYAnchor.constraint(equalTo: confirmPasswordImage.centerYAnchor),
+            confirmPasswordTextField.leadingAnchor.constraint(equalTo: confirmPasswordImage.trailingAnchor, constant: 10),
+            confirmPasswordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
-            divider1.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 5),
-            divider1.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
-            divider1.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
+            divider1.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor, constant: 5),
+            divider1.leadingAnchor.constraint(equalTo: confirmPasswordTextField.leadingAnchor),
+            divider1.trailingAnchor.constraint(equalTo: confirmPasswordTextField.trailingAnchor),
             divider1.heightAnchor.constraint(equalToConstant: 1),
             
             nextButton.topAnchor.constraint(equalTo: divider1.bottomAnchor, constant: 40),
             nextButton.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor),
             nextButton.widthAnchor.constraint(equalTo: logoImage.widthAnchor),
-            
-            haveAnAccountButton.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor),
-            haveAnAccountButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
         ])
     }
 }

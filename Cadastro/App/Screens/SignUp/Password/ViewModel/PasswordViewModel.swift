@@ -1,5 +1,5 @@
 //
-//  SignUpPasswordViewModel.swift
+//  PasswordViewModel.swift
 //  Cadastro
 //
 //  Created by Diggo Silva on 07/06/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SignUpPasswordViewModel {
+class PasswordViewModel {
     var cadastro: Cadastro?
     var email: String = ""
     var senha: String = ""
@@ -22,8 +22,8 @@ class SignUpPasswordViewModel {
     
     func enviarEmailESenhaPraProximaTela(senha: String) {
         self.senha = senha
-        print("Email cadastrado: \(self.email)")
-        print("Senha cadastrada: \(self.senha)")
+        print("DEBUG: Email cadastrado: \(self.email)")
+        print("DEBUG: Senha cadastrada: \(self.senha)")
         print("DEBUG: \(Cadastro(email: email, senha: senha))")
     }
 }

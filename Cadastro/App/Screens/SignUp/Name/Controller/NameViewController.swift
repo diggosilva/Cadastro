@@ -43,6 +43,15 @@ class NameViewController: UIViewController {
     private func setDelegateAndDataSources() {
         nameView.delegate = self
     }
+    
+    func alertRegisteredSuccessfully() {
+        let alert = UIAlertController(title: "🤗 SUCESSO!", message: "Cadastro efetuado com sucesso! \n Seja bem-vindo e aproveite nosso app!", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default) { action in
+            //TODO: após tocar no botão cadastrar, entrar no App
+        }
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
 }
 
 extension NameViewController: NameViewDelegate {
@@ -55,10 +64,11 @@ extension NameViewController: NameViewDelegate {
     }
     
     func didTapSignUpButton() {
-        //TODO: após tocar no botão cadastrar, avançar entrar no App
         if let name = nameView.nameTextField.text {
-            print("DEBUG: \(Cadastro(email: viewModel.email, senha: viewModel.password, confirmaSenha: viewModel.confirmPassword, nome: name))")
-            print("DEBUG: CADASTRADO COM SUCESSO!")
+            viewModel.enviarEmailSenhaConfirmarSenhaENomePraProximaTela(nome: name)
+            alertRegisteredSuccessfully()
+        } else {
+            print("Falha ao cadastrar Nome!")
         }
     }
 }

@@ -35,6 +35,7 @@ class NameView: UIView {
         textField.placeholder = "Digite seu nome..."
         textField.clearButtonMode = .whileEditing
         textField.autocapitalizationType = .words
+        textField.autocorrectionType = .no
         textField.becomeFirstResponder()
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField

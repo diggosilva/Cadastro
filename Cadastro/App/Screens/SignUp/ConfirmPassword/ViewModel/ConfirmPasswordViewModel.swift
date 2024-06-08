@@ -27,8 +27,6 @@ class ConfirmPasswordViewModel {
         self.confirmPassword = confirmarSenha
         
         if confirmarSenha == senha {
-            print("DEBUG: Email cadastrado: \(self.email)")
-            print("DEBUG: Senha cadastrada: \(self.password)")
             print("DEBUG: Confirmar Senha cadastrada: \(self.password)")
             print("DEBUG: \(Cadastro(email: email, senha: senha, confirmaSenha: confirmarSenha))")
         } else {

@@ -26,10 +26,7 @@ class NameViewModel {
     
     func enviarEmailSenhaConfirmarSenhaENomePraProximaTela(nome: String) {
         self.nome = nome
-        print("DEBUG: Email cadastrado: \(self.email)")
-        print("DEBUG: Senha cadastrada: \(self.password)")
-        print("DEBUG: Confirmar Senha cadastrada: \(self.confirmPassword)")
+        print("DEBUG: CADASTRO FINALIZADO COM SUCESSO!")
         print("DEBUG: \(Cadastro(email: self.email, senha: self.password, confirmaSenha: self.confirmPassword, nome: nome))")
-        print("CADSTRO FINALIZADO COM SUCESSO!")
     }
 }

@@ -48,7 +48,6 @@ class PasswordViewController: UIViewController {
     private func setDelegateAndDataSources() {
         passwordView.delegate = self
     }
-    
 }
 
 extension PasswordViewController: PasswordViewDelegate {
@@ -66,7 +65,7 @@ extension PasswordViewController: PasswordViewDelegate {
             let confirmPasswordVC = ConfirmPasswordViewController(email: viewModel.email, password: password)
             navigationController?.pushViewController(confirmPasswordVC, animated: true)
         } else {
-            print("Falha ao cadastrar Email e Senha!")
+            print("Falha ao cadastrar Senha!")
         }
     }
 }

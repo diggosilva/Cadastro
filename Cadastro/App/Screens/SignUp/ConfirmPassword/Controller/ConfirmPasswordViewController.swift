@@ -45,10 +45,11 @@ class ConfirmPasswordViewController: UIViewController {
     }
     
     func alertConfirmPassword() {
-        let alert = UIAlertController(title: "⛔️ Atenção!", message: "Erro ao confirmar senha! \n Sua senha deve ser a mesma digitada anteriormente.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "⛔️ Atenção!", message: "Erro ao confirmar senha! \n Sua senha deve ser a mesma digitada anteriormente.", preferredStyle: .actionSheet)
         let ok = UIAlertAction(title: "Entendi", style: .default) { action in
             self.confirmPasswordView.confirmPasswordTextField.text = ""
             self.confirmPasswordView.confirmPasswordTextField.becomeFirstResponder()
+            self.confirmPasswordView.nextButton.isEnabled = false
         }
         alert.addAction(ok)
         present(alert, animated: true)
@@ -61,6 +62,7 @@ extension ConfirmPasswordViewController: ConfirmPasswordViewDelegate {
             confirmPasswordView.nextButton.isEnabled = !confirmPassword.isEmpty
         } else {
             confirmPasswordView.nextButton.isEnabled = true
+            confirmPasswordView.shakeFeedback(withDuration: 0.5)
             alertConfirmPassword()
         }
     }
@@ -73,24 +75,10 @@ extension ConfirmPasswordViewController: ConfirmPasswordViewDelegate {
                 navigationController?.pushViewController(nameVC, animated: true)
             } else {
                 alertConfirmPassword()
+                confirmPasswordView.shakeFeedback()
             }
         } else {
-            print("Falha ao cadastrar Email, Senha e Confirmação de Senha!")
+            print("Falha ao cadastrar Confirmação de Senha!")
         }
     }
-    
-//    func didTapNextButton() {
-//        //TODO: criar tela de Nome, e avançar quando clicar
-//        if let confirmPassword = confirmPasswordView.confirmPasswordTextField.text {
-//            if confirmPassword == viewModel.password {
-//                viewModel.enviarEmailSenhaEConfirmarSenhaPraProximaTela(senha: viewModel.password, confirmarSenha: confirmPassword)
-//                let nameVC = NameViewController(email: viewModel.email, password: viewModel.password, confirmPassword: viewModel.confirmPassword)
-//                navigationController?.pushViewController(nameVC, animated: true)
-//            } else {
-//                print("DEBUG: Tem boi na linha, amiguinhooo!")
-//            }
-//        } else {
-//            print("Falha ao cadastrar Email, Senha e Confirmação de Senha!")
-//        }
-//    }
 }

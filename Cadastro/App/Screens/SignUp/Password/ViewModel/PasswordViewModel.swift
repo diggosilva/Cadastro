@@ -22,7 +22,6 @@ class PasswordViewModel {
     
     func enviarEmailESenhaPraProximaTela(senha: String) {
         self.senha = senha
-        print("DEBUG: Email cadastrado: \(self.email)")
         print("DEBUG: Senha cadastrada: \(self.senha)")
         print("DEBUG: \(Cadastro(email: email, senha: senha))")
     }

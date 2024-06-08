@@ -36,6 +36,7 @@ class LoginView: UIView {
         textField.clearButtonMode = .whileEditing
         textField.autocapitalizationType = .none
         textField.keyboardType = .emailAddress
+        textField.becomeFirstResponder()
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()

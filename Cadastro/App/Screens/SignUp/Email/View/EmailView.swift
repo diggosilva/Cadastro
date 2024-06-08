@@ -36,6 +36,7 @@ class EmailView: UIView {
         textField.placeholder = "Digite seu email..."
         textField.clearButtonMode = .whileEditing
         textField.autocapitalizationType = .none
+        textField.becomeFirstResponder()
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()

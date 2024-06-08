@@ -9,8 +9,8 @@ import UIKit
 
 class EmailViewController: UIViewController {
     
-    let emailView = EmailView()
-    let viewModel: EmailViewModel
+    private let emailView = EmailView()
+    private let viewModel: EmailViewModel
     
     init() {
         self.viewModel = EmailViewModel()

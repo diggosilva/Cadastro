@@ -8,11 +8,11 @@
 import Foundation
 
 class NameViewModel {
-    var cadastro: Cadastro?
-    var email: String = ""
-    var password: String = ""
-    var confirmPassword: String = ""
-    var nome: String = ""
+    private var cadastro: Cadastro?
+    private var email: String = ""
+    private var password: String = ""
+    private var confirmPassword: String = ""
+    private var nome: String = ""
     
     init(email: String, password: String, confirmPassword: String) {
         self.email = email

@@ -8,9 +8,9 @@
 import Foundation
 
 class PasswordViewModel {
-    var cadastro: Cadastro?
+    private var cadastro: Cadastro?
     var email: String = ""
-    var senha: String = ""
+    private var senha: String = ""
     
     init(email: String) {
         self.email = email

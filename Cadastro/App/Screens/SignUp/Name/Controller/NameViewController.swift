@@ -44,7 +44,7 @@ class NameViewController: UIViewController {
         nameView.delegate = self
     }
     
-    func alertRegisteredSuccessfully() {
+    private func alertRegisteredSuccessfully() {
         let alert = UIAlertController(title: "🤗 SUCESSO!", message: "Cadastro efetuado com sucesso! \n Seja bem-vindo e aproveite nosso app!", preferredStyle: .alert)
         let ok = UIAlertAction(title: "Ok", style: .default) { action in
             //TODO: após tocar no botão cadastrar, entrar no App

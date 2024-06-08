@@ -9,8 +9,8 @@ import UIKit
 
 class PasswordViewController: UIViewController {
     
-    let passwordView = PasswordView()
-    let viewModel: PasswordViewModel
+    private let passwordView = PasswordView()
+    private let viewModel: PasswordViewModel
     
     init(email: String) {
         self.viewModel = PasswordViewModel(email: email)

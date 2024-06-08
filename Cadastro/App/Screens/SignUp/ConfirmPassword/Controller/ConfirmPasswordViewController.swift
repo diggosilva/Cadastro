@@ -9,8 +9,8 @@ import UIKit
 
 class ConfirmPasswordViewController: UIViewController {
     
-    let confirmPasswordView = ConfirmPasswordView()
-    let viewModel: ConfirmPasswordViewModel
+    private let confirmPasswordView = ConfirmPasswordView()
+    private let viewModel: ConfirmPasswordViewModel
     
     init(email: String, password: String) {
         self.viewModel = ConfirmPasswordViewModel(email: email, password: password)
@@ -44,7 +44,7 @@ class ConfirmPasswordViewController: UIViewController {
         confirmPasswordView.delegate = self
     }
     
-    func alertConfirmPassword() {
+    private func alertConfirmPassword() {
         let alert = UIAlertController(title: "⛔️ Atenção!", message: "Erro ao confirmar senha! \n Sua senha deve ser a mesma digitada anteriormente.", preferredStyle: .actionSheet)
         let ok = UIAlertAction(title: "Entendi", style: .default) { action in
             self.confirmPasswordView.confirmPasswordTextField.text = ""

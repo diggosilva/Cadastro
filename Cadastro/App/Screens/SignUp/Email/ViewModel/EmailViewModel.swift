@@ -8,8 +8,8 @@
 import Foundation
 
 class EmailViewModel {
-    var cadastro: Cadastro?
-    var email: String = ""
+    private var cadastro: Cadastro?
+    private var email: String = ""
     
     init() {
         

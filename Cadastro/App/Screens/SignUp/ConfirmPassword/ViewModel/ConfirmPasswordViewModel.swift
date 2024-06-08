@@ -8,7 +8,7 @@
 import Foundation
 
 class ConfirmPasswordViewModel {
-    var cadastro: Cadastro?
+    private var cadastro: Cadastro?
     var email: String = ""
     var password: String = ""
     var confirmPassword: String = ""

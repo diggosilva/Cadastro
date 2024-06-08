@@ -144,7 +144,7 @@
 		9251D4A12C13C3D70033863F /* Name */ = {
 			isa = PBXGroup;
 			children = (
-				9251D4A42C13C3ED0033863F /* Controller */,
+				92E6AFFD2C14B94F00B6DA19 /* Controller */,
 				9251D4A32C13C3ED0033863F /* View */,
 				9251D4A22C13C3EC0033863F /* ViewModel */,
 			);
@@ -163,13 +163,6 @@
 			children = (
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		9251D4A42C13C3ED0033863F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		927744402C1210CB00895927 = {
@@ -318,6 +311,13 @@
 			isa = PBXGroup;
 			children = (
 				927744762C12471700895927 /* EmailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		92E6AFFD2C14B94F00B6DA19 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Controller;
 			sourceTree = "<group>";

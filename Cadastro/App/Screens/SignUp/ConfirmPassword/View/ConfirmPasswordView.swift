@@ -36,6 +36,7 @@ class ConfirmPasswordView: UIView {
         textField.clearButtonMode = .whileEditing
         textField.autocapitalizationType = .none
         textField.isSecureTextEntry = true
+        textField.becomeFirstResponder()
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()

@@ -1,18 +1,18 @@
 //
-//  PasswordView.swift
+//  NameView.swift
 //  Cadastro
 //
-//  Created by Diggo Silva on 07/06/24.
+//  Created by Diggo Silva on 08/06/24.
 //
 
 import UIKit
 
-protocol PasswordViewDelegate: AnyObject {
-    func verificaCampoSenha()
-    func didTapNextButton()
+protocol NameViewDelegate: AnyObject {
+    func verificaCampoNome()
+    func didTapSignUpButton()
 }
 
-class PasswordView: UIView {
+class NameView: UIView {
     lazy var logoImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -21,21 +21,20 @@ class PasswordView: UIView {
         return image
     }()
     
-    lazy var passwordImage: UIImageView = {
+    lazy var nameImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "lock")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+        image.image = UIImage(systemName: "pencil.and.list.clipboard")?.withTintColor(.label, renderingMode: .alwaysOriginal)
         image.contentMode = .scaleAspectFit
         return image
     }()
     
-    lazy var passwordTextField: UITextField = {
+    lazy var nameTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Digite sua senha..."
+        textField.placeholder = "Digite seu nome..."
         textField.clearButtonMode = .whileEditing
-        textField.autocapitalizationType = .none
-        textField.isSecureTextEntry = true
+        textField.autocapitalizationType = .words
         textField.becomeFirstResponder()
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
@@ -48,16 +47,16 @@ class PasswordView: UIView {
         return view
     }()
     
-    lazy var nextButton: UIButton = {
+    lazy var signUpButton: UIButton = {
         let button = UIButton(configuration: .borderedTinted())
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Próximo", for: .normal)
+        button.setTitle("Cadastrar", for: .normal)
         button.isEnabled = false
-        button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    weak var delegate: PasswordViewDelegate?
+    weak var delegate: NameViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -69,11 +68,11 @@ class PasswordView: UIView {
     }
     
     @objc private func textFieldDidChange() {
-        delegate?.verificaCampoSenha()
+        delegate?.verificaCampoNome()
     }
     
-    @objc private func nextButtonTapped() {
-        delegate?.didTapNextButton()
+    @objc private func signUpButtonTapped() {
+        delegate?.didTapSignUpButton()
     }
     
     private func setupView() {
@@ -83,7 +82,7 @@ class PasswordView: UIView {
     }
     
     private func setHierarchy () {
-        addSubviews([logoImage, passwordImage, passwordTextField, divider1, nextButton])
+        addSubviews([logoImage, nameImage, nameTextField, divider1, signUpButton])
     }
     
     private func setConstraints() {
@@ -93,23 +92,23 @@ class PasswordView: UIView {
             logoImage.widthAnchor.constraint(equalToConstant: 200),
             logoImage.heightAnchor.constraint(equalTo: logoImage.widthAnchor),
     
-            passwordImage.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 40),
-            passwordImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            passwordImage.widthAnchor.constraint(equalToConstant: 30),
-            passwordImage.heightAnchor.constraint(equalTo: passwordImage.widthAnchor),
+            nameImage.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 40),
+            nameImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            nameImage.widthAnchor.constraint(equalToConstant: 30),
+            nameImage.heightAnchor.constraint(equalTo: nameImage.widthAnchor),
             
-            passwordTextField.centerYAnchor.constraint(equalTo: passwordImage.centerYAnchor),
-            passwordTextField.leadingAnchor.constraint(equalTo: passwordImage.trailingAnchor, constant: 10),
-            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            nameTextField.centerYAnchor.constraint(equalTo: nameImage.centerYAnchor),
+            nameTextField.leadingAnchor.constraint(equalTo: nameImage.trailingAnchor, constant: 10),
+            nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
-            divider1.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 5),
-            divider1.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor),
-            divider1.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor),
+            divider1.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 5),
+            divider1.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
+            divider1.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor),
             divider1.heightAnchor.constraint(equalToConstant: 1),
             
-            nextButton.topAnchor.constraint(equalTo: divider1.bottomAnchor, constant: 40),
-            nextButton.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor),
-            nextButton.widthAnchor.constraint(equalTo: logoImage.widthAnchor),
+            signUpButton.topAnchor.constraint(equalTo: divider1.bottomAnchor, constant: 40),
+            signUpButton.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor),
+            signUpButton.widthAnchor.constraint(equalTo: logoImage.widthAnchor),
         ])
     }
 }

@@ -26,6 +26,9 @@
 		927744712C121EA200895927 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927744702C121EA200895927 /* Extensions.swift */; };
 		927744772C12471700895927 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927744762C12471700895927 /* EmailViewController.swift */; };
 		927744792C1247E500895927 /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927744782C1247E500895927 /* EmailView.swift */; };
+		92E6B0002C14C60B00B6DA19 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E6AFFF2C14C60B00B6DA19 /* NameViewController.swift */; };
+		92E6B0022C14C62E00B6DA19 /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E6B0012C14C62E00B6DA19 /* NameView.swift */; };
+		92E6B0042C14C63800B6DA19 /* NameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E6B0032C14C63800B6DA19 /* NameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		927744702C121EA200895927 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		927744762C12471700895927 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		927744782C1247E500895927 /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		92E6AFFF2C14C60B00B6DA19 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		92E6B0012C14C62E00B6DA19 /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
+		92E6B0032C14C63800B6DA19 /* NameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +150,7 @@
 		9251D4A12C13C3D70033863F /* Name */ = {
 			isa = PBXGroup;
 			children = (
-				9251D4A42C13C3ED0033863F /* Controller */,
+				92E6AFFD2C14B94F00B6DA19 /* Controller */,
 				9251D4A32C13C3ED0033863F /* View */,
 				9251D4A22C13C3EC0033863F /* ViewModel */,
 			);
@@ -154,6 +160,7 @@
 		9251D4A22C13C3EC0033863F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				92E6B0032C14C63800B6DA19 /* NameViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -161,15 +168,9 @@
 		9251D4A32C13C3ED0033863F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				92E6B0012C14C62E00B6DA19 /* NameView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		9251D4A42C13C3ED0033863F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		927744402C1210CB00895927 = {
@@ -322,6 +323,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		92E6AFFD2C14B94F00B6DA19 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				92E6AFFF2C14C60B00B6DA19 /* NameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -397,13 +406,16 @@
 				927744642C1214EF00895927 /* Bindable.swift in Sources */,
 				927744622C12149A00895927 /* LoginViewModel.swift in Sources */,
 				927744512C1210CB00895927 /* LoginViewController.swift in Sources */,
+				92E6B0002C14C60B00B6DA19 /* NameViewController.swift in Sources */,
 				9277444D2C1210CB00895927 /* AppDelegate.swift in Sources */,
+				92E6B0042C14C63800B6DA19 /* NameViewModel.swift in Sources */,
 				927744772C12471700895927 /* EmailViewController.swift in Sources */,
 				9251D4892C13627C0033863F /* Cadastro.swift in Sources */,
 				9251D4952C138BA20033863F /* PasswordViewModel.swift in Sources */,
 				9251D49C2C13A9F20033863F /* ConfirmPasswordViewController.swift in Sources */,
 				9251D48B2C1362B50033863F /* EmailViewModel.swift in Sources */,
 				9277444F2C1210CB00895927 /* SceneDelegate.swift in Sources */,
+				92E6B0022C14C62E00B6DA19 /* NameView.swift in Sources */,
 				9251D4912C138A8C0033863F /* PasswordViewController.swift in Sources */,
 				9251D49E2C13AA580033863F /* ConfirmPasswordView.swift in Sources */,
 				927744792C1247E500895927 /* EmailView.swift in Sources */,

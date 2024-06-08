@@ -11,7 +11,7 @@ class ConfirmPasswordViewModel {
     var cadastro: Cadastro?
     var email: String = ""
     var password: String = ""
-    var confirmaSenha: String = ""
+    var confirmPassword: String = ""
     
     init(email: String, password: String) {
         self.email = email
@@ -24,7 +24,7 @@ class ConfirmPasswordViewModel {
     
     func enviarEmailSenhaEConfirmarSenhaPraProximaTela(senha: String, confirmarSenha: String) {
         self.password = senha
-        self.confirmaSenha = confirmarSenha
+        self.confirmPassword = confirmarSenha
         
         if confirmarSenha == senha {
             print("DEBUG: Email cadastrado: \(self.email)")

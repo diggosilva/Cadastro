@@ -62,7 +62,7 @@ extension EmailViewController: EmailViewDelegate {
     func didTapNextButton() {
         if let email = emailView.emailTextField.text {
             viewModel.enviarEmailPraProximaTela(email: email)
-            let passwordVC = PasswordViewController(cadastro: viewModel.cadastro)
+            let passwordVC = PasswordViewController(user: viewModel.user)
             navigationController?.pushViewController(passwordVC, animated: true)
         } else {
             print("Falha ao cadastrar email!")

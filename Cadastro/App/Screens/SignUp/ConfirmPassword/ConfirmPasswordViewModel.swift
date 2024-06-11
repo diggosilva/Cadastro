@@ -8,16 +8,16 @@
 import Foundation
 
 class ConfirmPasswordViewModel {
-    var cadastro: Cadastro
+    var user: User
     
-    init(cadastro: Cadastro) {
-        self.cadastro = cadastro
+    init(user: User) {
+        self.user = user
     }
     
     func enviarEmailSenhaEConfirmarSenhaPraProximaTela(confirmaSenha: String) {
-        if confirmaSenha == cadastro.senha {
-            cadastro.confirmaSenha = confirmaSenha
-            print("DEBUG: Confirmação de Senha foi cadastrada: \(cadastro.confirmaSenha)")
+        if confirmaSenha == user.senha {
+            user.confirmaSenha = confirmaSenha
+            print("DEBUG: Confirmação de Senha foi cadastrada: \(user.confirmaSenha)")
         } else {
             print("DEBUG: Erro ao confirmar senha: A senha deve ser a mesma que você digitou anteriormente")
         }

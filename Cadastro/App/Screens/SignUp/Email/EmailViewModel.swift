@@ -8,12 +8,11 @@
 import Foundation
 
 class EmailViewModel {
-    var cadastro = Cadastro()
+    var user = User()
     private var email: String = ""
     
     func enviarEmailPraProximaTela(email: String) {
-        cadastro.email = email
-//        let dataTransferObject = email
-        print("DEBUG: Email foi cadastrado: \(cadastro.email)")
+        user.email = email
+        print("DEBUG: Email foi cadastrado: \(user.email)")
     }
 }

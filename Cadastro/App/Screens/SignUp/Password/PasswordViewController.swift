@@ -12,8 +12,8 @@ class PasswordViewController: UIViewController {
     private let passwordView = PasswordView()
     private let viewModel: PasswordViewModel
     
-    init(cadastro: Cadastro) {
-        self.viewModel = PasswordViewModel(cadastro: cadastro)
+    init(user: User) {
+        self.viewModel = PasswordViewModel(user: user)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -34,8 +34,8 @@ class PasswordViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if viewModel.cadastro.senha != "" {
-            let senha = viewModel.cadastro.senha
+        if viewModel.user.senha != "" {
+            let senha = viewModel.user.senha
             passwordView.passwordTextField.text = senha
             passwordView.nextButton.isEnabled = true
             print("DEBUG: TEM DADO AQUI, a senha é \(senha)")
@@ -60,11 +60,11 @@ class PasswordViewController: UIViewController {
 
 extension PasswordViewController: PasswordViewDelegate {    
     func verificaCampoSenha() {
-        if let senha = passwordView.passwordTextField.text {
+        if let password = passwordView.passwordTextField.text {
             // Verifica se a senha não está vazia e atende aos critérios mínimos de segurança
-            let senhaRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{4,}$"
-            let senhaValida = NSPredicate(format: "SELF MATCHES %@", senhaRegex)
-            passwordView.nextButton.isEnabled = senhaValida.evaluate(with: senha)
+            let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{4,}$"
+            let passwordValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+            passwordView.nextButton.isEnabled = passwordValid.evaluate(with: password)
         } else {
             passwordView.nextButton.isEnabled = false
         } 
@@ -74,7 +74,7 @@ extension PasswordViewController: PasswordViewDelegate {
     func didTapNextButton() {
         if let password = passwordView.passwordTextField.text {
             viewModel.enviarEmailESenhaPraProximaTela(senha: password)
-            let confirmPasswordVC = ConfirmPasswordViewController(cadastro: viewModel.cadastro)
+            let confirmPasswordVC = ConfirmPasswordViewController(user: viewModel.user)
             navigationController?.pushViewController(confirmPasswordVC, animated: true)
         } else {
             print("Falha ao cadastrar Senha!")

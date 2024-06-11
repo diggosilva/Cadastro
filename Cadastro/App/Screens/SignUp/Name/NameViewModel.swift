@@ -8,16 +8,16 @@
 import Foundation
 
 class NameViewModel {
-    var cadastro: Cadastro
+    var user: User
     
-    init(cadastro: Cadastro) {
-        self.cadastro = cadastro
+    init(user: User) {
+        self.user = user
     }
     
     func enviarEmailSenhaConfirmarSenhaENomePraProximaTela(nome: String) {
-        cadastro.nome = nome
-        print("DEBUG: Nome foi cadastrado \(cadastro.nome)")
-        print("DEBUG: Objeto EMAIL: \(cadastro.email), SENHA: \(cadastro.senha), CONFIRMA SENHA: \(cadastro.confirmaSenha), NOME: \(cadastro.nome)")
+        user.nome = nome
+        print("DEBUG: Nome foi cadastrado \(user.nome)")
+        print("DEBUG: Objeto EMAIL: \(user.email), SENHA: \(user.senha), CONFIRMA SENHA: \(user.confirmaSenha), NOME: \(user.nome)")
         print("DEBUG: CADASTRO FINALIZADO COM SUCESSO!")
     }
 }

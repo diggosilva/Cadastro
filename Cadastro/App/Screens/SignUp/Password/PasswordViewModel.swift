@@ -8,14 +8,14 @@
 import Foundation
 
 class PasswordViewModel {
-    var cadastro: Cadastro
+    var user: User
     
-    init(cadastro: Cadastro) {
-        self.cadastro = cadastro
+    init(user: User) {
+        self.user = user
     }
     
     func enviarEmailESenhaPraProximaTela(senha: String) {
-        cadastro.senha = senha
-        print("DEBUG: Senha foi cadastrada: \(cadastro.senha)")
+        user.senha = senha
+        print("DEBUG: Senha foi cadastrada: \(user.senha)")
     }
 }

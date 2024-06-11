@@ -12,8 +12,8 @@ class NameViewController: UIViewController {
     private let nameView = NameView()
     private let viewModel: NameViewModel
     
-    init(cadastro: Cadastro) {
-        self.viewModel = NameViewModel(cadastro: cadastro)
+    init(user: User) {
+        self.viewModel = NameViewModel(user: user)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -56,10 +56,10 @@ class NameViewController: UIViewController {
 
 extension NameViewController: NameViewDelegate {
     func verificaCampoNome() {
-        if let nome = nameView.nameTextField.text {
-            let nomeRegex = "^[a-zA-Z]+( [a-zA-Z]+)*$" // Expressão regular para verificar letras e espaços apenas entre palavras
-            let nomeValido = NSPredicate(format: "SELF MATCHES %@", nomeRegex)
-            nameView.signUpButton.isEnabled = nomeValido.evaluate(with: nome)
+        if let name = nameView.nameTextField.text {
+            let nameRegex = "^[a-zA-Z]+( [a-zA-Z]+)*$" // Expressão regular para verificar letras e espaços apenas entre palavras
+            let nameValid = NSPredicate(format: "SELF MATCHES %@", nameRegex)
+            nameView.signUpButton.isEnabled = nameValid.evaluate(with: name)
         } else {
             nameView.signUpButton.isEnabled = false
         }

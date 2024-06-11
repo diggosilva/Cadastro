@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9251D4892C13627C0033863F /* Cadastro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D4882C13627C0033863F /* Cadastro.swift */; };
+		9251D4892C13627C0033863F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D4882C13627C0033863F /* User.swift */; };
 		9251D48B2C1362B50033863F /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D48A2C1362B50033863F /* EmailViewModel.swift */; };
 		9251D4912C138A8C0033863F /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D4902C138A8C0033863F /* PasswordViewController.swift */; };
 		9251D4932C138B810033863F /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D4922C138B810033863F /* PasswordView.swift */; };
@@ -32,7 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9251D4882C13627C0033863F /* Cadastro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cadastro.swift; sourceTree = "<group>"; };
+		9251D4882C13627C0033863F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9251D48A2C1362B50033863F /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
 		9251D4902C138A8C0033863F /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		9251D4922C138B810033863F /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		927744682C121B7500895927 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9251D4882C13627C0033863F /* Cadastro.swift */,
+				9251D4882C13627C0033863F /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,7 +290,7 @@
 				9277444D2C1210CB00895927 /* AppDelegate.swift in Sources */,
 				92E6B0042C14C63800B6DA19 /* NameViewModel.swift in Sources */,
 				927744772C12471700895927 /* EmailViewController.swift in Sources */,
-				9251D4892C13627C0033863F /* Cadastro.swift in Sources */,
+				9251D4892C13627C0033863F /* User.swift in Sources */,
 				9251D4952C138BA20033863F /* PasswordViewModel.swift in Sources */,
 				9251D49C2C13A9F20033863F /* ConfirmPasswordViewController.swift in Sources */,
 				9251D48B2C1362B50033863F /* EmailViewModel.swift in Sources */,

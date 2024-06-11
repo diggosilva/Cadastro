@@ -12,8 +12,8 @@ class ConfirmPasswordViewController: UIViewController {
     private let confirmPasswordView = ConfirmPasswordView()
     private let viewModel: ConfirmPasswordViewModel
     
-    init(cadastro: Cadastro) {
-        self.viewModel = ConfirmPasswordViewModel(cadastro: cadastro)
+    init(user: User) {
+        self.viewModel = ConfirmPasswordViewModel(user: user)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -34,8 +34,8 @@ class ConfirmPasswordViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if viewModel.cadastro.confirmaSenha != "" {
-            let confirmaSenha = viewModel.cadastro.confirmaSenha
+        if viewModel.user.confirmaSenha != "" {
+            let confirmaSenha = viewModel.user.confirmaSenha
             confirmPasswordView.confirmPasswordTextField.text = confirmaSenha
             confirmPasswordView.nextButton.isEnabled = true
             print("DEBUG: TEM DADO AQUI, a senha é \(confirmaSenha)")
@@ -85,9 +85,9 @@ extension ConfirmPasswordViewController: ConfirmPasswordViewDelegate {
     
     func didTapNextButton() {
         if let confirmPassword = confirmPasswordView.confirmPasswordTextField.text {
-            if confirmPassword == viewModel.cadastro.senha {
+            if confirmPassword == viewModel.user.senha {
                 viewModel.enviarEmailSenhaEConfirmarSenhaPraProximaTela(confirmaSenha: confirmPassword)
-                let nameVC = NameViewController(cadastro: viewModel.cadastro)
+                let nameVC = NameViewController(user: viewModel.user)
                 navigationController?.pushViewController(nameVC, animated: true)
             } else {
                 alertConfirmPassword()

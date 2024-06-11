@@ -32,6 +32,19 @@ class PasswordViewController: UIViewController {
         setDelegateAndDataSources()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if viewModel.cadastro.senha != "" {
+            let senha = viewModel.cadastro.senha
+            passwordView.passwordTextField.text = senha
+            passwordView.nextButton.isEnabled = true
+            print("DEBUG: TEM DADO AQUI, a senha é \(senha)")
+        } else {
+            passwordView.nextButton.isEnabled = false
+            print("DEBUG: NÃO TEM DADO AQUI")
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }

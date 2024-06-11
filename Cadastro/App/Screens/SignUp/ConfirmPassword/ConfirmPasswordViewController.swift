@@ -32,6 +32,19 @@ class ConfirmPasswordViewController: UIViewController {
         setDelegateAndDataSources()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if viewModel.cadastro.confirmaSenha != "" {
+            let confirmaSenha = viewModel.cadastro.confirmaSenha
+            confirmPasswordView.confirmPasswordTextField.text = confirmaSenha
+            confirmPasswordView.nextButton.isEnabled = true
+            print("DEBUG: TEM DADO AQUI, a senha é \(confirmaSenha)")
+        } else {
+            confirmPasswordView.nextButton.isEnabled = false
+            print("DEBUG: NÃO TEM DADO AQUI")
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }

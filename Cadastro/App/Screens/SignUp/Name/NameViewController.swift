@@ -12,8 +12,8 @@ class NameViewController: UIViewController {
     private let nameView = NameView()
     private let viewModel: NameViewModel
     
-    init(email: String, password: String, confirmPassword: String) {
-        self.viewModel = NameViewModel(email: email, password: password, confirmPassword: confirmPassword)
+    init(cadastro: Cadastro) {
+        self.viewModel = NameViewModel(cadastro: cadastro)
         super.init(nibName: nil, bundle: nil)
     }
     

@@ -12,13 +12,8 @@ class EmailViewController: UIViewController {
     private let emailView = EmailView()
     private let viewModel: EmailViewModel
     
-    init() {
-        self.viewModel = EmailViewModel()
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    init(cadastro: Cadastro) {
-        self.viewModel = EmailViewModel(cadastro: cadastro)
+    init(viewModel: EmailViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -62,7 +57,7 @@ extension EmailViewController: EmailViewDelegate {
     func didTapNextButton() {
         if let email = emailView.emailTextField.text {
             viewModel.enviarEmailPraProximaTela(email: email)
-            let passwordVC = PasswordViewController(email: email)
+            let passwordVC = PasswordViewController(cadastro: viewModel.cadastro)
             navigationController?.pushViewController(passwordVC, animated: true)
         } else {
             print("Falha ao cadastrar email!")

@@ -12,11 +12,6 @@ class PasswordViewController: UIViewController {
     private let passwordView = PasswordView()
     private let viewModel: PasswordViewModel
     
-    init(email: String) {
-        self.viewModel = PasswordViewModel(email: email)
-        super.init(nibName: nil, bundle: nil)
-    }
-    
     init(cadastro: Cadastro) {
         self.viewModel = PasswordViewModel(cadastro: cadastro)
         super.init(nibName: nil, bundle: nil)
@@ -62,7 +57,7 @@ extension PasswordViewController: PasswordViewDelegate {
     func didTapNextButton() {
         if let password = passwordView.passwordTextField.text {
             viewModel.enviarEmailESenhaPraProximaTela(senha: password)
-            let confirmPasswordVC = ConfirmPasswordViewController(email: viewModel.email, password: password)
+            let confirmPasswordVC = ConfirmPasswordViewController(cadastro: viewModel.cadastro)
             navigationController?.pushViewController(confirmPasswordVC, animated: true)
         } else {
             print("Falha ao cadastrar Senha!")

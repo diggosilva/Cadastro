@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Cadastro {
-    var email: String?
-    var senha: String?
-    var confirmaSenha: String?
-    var nome: String?
+class Cadastro {
+    var email: String = ""
+    var senha: String = ""
+    var confirmaSenha: String = ""
+    var nome: String = ""
 }

@@ -72,9 +72,9 @@
 		9251D4872C1361660033863F /* Email */ = {
 			isa = PBXGroup;
 			children = (
-				927744752C12458600895927 /* Controller */,
-				927744742C12458500895927 /* View */,
-				927744732C12458400895927 /* ViewModel */,
+				927744762C12471700895927 /* EmailViewController.swift */,
+				927744782C1247E500895927 /* EmailView.swift */,
+				9251D48A2C1362B50033863F /* EmailViewModel.swift */,
 			);
 			path = Email;
 			sourceTree = "<group>";
@@ -82,95 +82,31 @@
 		9251D48C2C13873B0033863F /* Password */ = {
 			isa = PBXGroup;
 			children = (
-				9251D48F2C13874D0033863F /* Controller */,
-				9251D48E2C13874C0033863F /* View */,
-				9251D48D2C13874B0033863F /* ViewModel */,
-			);
-			path = Password;
-			sourceTree = "<group>";
-		};
-		9251D48D2C13874B0033863F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
+				9251D4902C138A8C0033863F /* PasswordViewController.swift */,
+				9251D4922C138B810033863F /* PasswordView.swift */,
 				9251D4942C138BA20033863F /* PasswordViewModel.swift */,
 			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		9251D48E2C13874C0033863F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9251D4922C138B810033863F /* PasswordView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		9251D48F2C13874D0033863F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9251D4902C138A8C0033863F /* PasswordViewController.swift */,
-			);
-			path = Controller;
+			path = Password;
 			sourceTree = "<group>";
 		};
 		9251D4962C13A94B0033863F /* ConfirmPassword */ = {
 			isa = PBXGroup;
 			children = (
-				9251D4992C13A97F0033863F /* Controller */,
-				9251D4982C13A97E0033863F /* View */,
-				9251D4972C13A97D0033863F /* ViewModel */,
-			);
-			path = ConfirmPassword;
-			sourceTree = "<group>";
-		};
-		9251D4972C13A97D0033863F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
+				9251D49B2C13A9F20033863F /* ConfirmPasswordViewController.swift */,
+				9251D49D2C13AA580033863F /* ConfirmPasswordView.swift */,
 				9251D49F2C13AA6A0033863F /* ConfirmPasswordViewModel.swift */,
 			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		9251D4982C13A97E0033863F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9251D49D2C13AA580033863F /* ConfirmPasswordView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		9251D4992C13A97F0033863F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9251D49B2C13A9F20033863F /* ConfirmPasswordViewController.swift */,
-			);
-			path = Controller;
+			path = ConfirmPassword;
 			sourceTree = "<group>";
 		};
 		9251D4A12C13C3D70033863F /* Name */ = {
 			isa = PBXGroup;
 			children = (
-				92E6AFFD2C14B94F00B6DA19 /* Controller */,
-				9251D4A32C13C3ED0033863F /* View */,
-				9251D4A22C13C3EC0033863F /* ViewModel */,
-			);
-			path = Name;
-			sourceTree = "<group>";
-		};
-		9251D4A22C13C3EC0033863F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
+				92E6AFFF2C14C60B00B6DA19 /* NameViewController.swift */,
+				92E6B0012C14C62E00B6DA19 /* NameView.swift */,
 				92E6B0032C14C63800B6DA19 /* NameViewModel.swift */,
 			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		9251D4A32C13C3ED0033863F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				92E6B0012C14C62E00B6DA19 /* NameView.swift */,
-			);
-			path = View;
+			path = Name;
 			sourceTree = "<group>";
 		};
 		927744402C1210CB00895927 = {
@@ -224,9 +160,9 @@
 		927744662C121B7200895927 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				9277446D2C121BBC00895927 /* Controller */,
-				9277446C2C121BBB00895927 /* View */,
-				9277446B2C121BB500895927 /* ViewModel */,
+				927744502C1210CB00895927 /* LoginViewController.swift */,
+				9277446E2C121BEA00895927 /* LoginView.swift */,
+				927744612C12149A00895927 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -264,30 +200,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		9277446B2C121BB500895927 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				927744612C12149A00895927 /* LoginViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		9277446C2C121BBB00895927 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9277446E2C121BEA00895927 /* LoginView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		9277446D2C121BBC00895927 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				927744502C1210CB00895927 /* LoginViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		927744722C12457600895927 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,38 +209,6 @@
 				9251D4A12C13C3D70033863F /* Name */,
 			);
 			path = SignUp;
-			sourceTree = "<group>";
-		};
-		927744732C12458400895927 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9251D48A2C1362B50033863F /* EmailViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		927744742C12458500895927 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				927744782C1247E500895927 /* EmailView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		927744752C12458600895927 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				927744762C12471700895927 /* EmailViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		92E6AFFD2C14B94F00B6DA19 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				92E6AFFF2C14C60B00B6DA19 /* NameViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

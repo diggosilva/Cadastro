@@ -56,10 +56,12 @@ class NameViewController: UIViewController {
 
 extension NameViewController: NameViewDelegate {
     func verificaCampoNome() {
-        if let name = nameView.nameTextField.text {
-            nameView.signUpButton.isEnabled = !name.isEmpty
+        if let nome = nameView.nameTextField.text {
+            let nomeRegex = "^[a-zA-Z]+( [a-zA-Z]+)*$" // Expressão regular para verificar letras e espaços apenas entre palavras
+            let nomeValido = NSPredicate(format: "SELF MATCHES %@", nomeRegex)
+            nameView.signUpButton.isEnabled = nomeValido.evaluate(with: nome)
         } else {
-            nameView.signUpButton.isEnabled = true
+            nameView.signUpButton.isEnabled = false
         }
     }
     

@@ -48,12 +48,17 @@ class EmailViewController: UIViewController {
 extension EmailViewController: EmailViewDelegate {
     func verificaCampoEmail() {
         if let email = emailView.emailTextField.text {
-            emailView.nextButton.isEnabled = !email.isEmpty
+            let emailWithoutWhiteSpaces = email.trimmingCharacters(in: .whitespaces)
+            
+            let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            let emailValid = NSPredicate(format:"SELF MATCHES %@", emailRegex)
+            
+            emailView.nextButton.isEnabled = emailValid.evaluate(with: emailWithoutWhiteSpaces)
         } else {
-            emailView.nextButton.isEnabled = true
+            emailView.nextButton.isEnabled = false
         }
     }
-    
+
     func didTapNextButton() {
         if let email = emailView.emailTextField.text {
             viewModel.enviarEmailPraProximaTela(email: email)

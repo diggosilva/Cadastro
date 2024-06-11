@@ -45,14 +45,18 @@ class PasswordViewController: UIViewController {
     }
 }
 
-extension PasswordViewController: PasswordViewDelegate {
+extension PasswordViewController: PasswordViewDelegate {    
     func verificaCampoSenha() {
-        if let password = passwordView.passwordTextField.text {
-            passwordView.nextButton.isEnabled = !password.isEmpty
+        if let senha = passwordView.passwordTextField.text {
+            // Verifica se a senha não está vazia e atende aos critérios mínimos de segurança
+            let senhaRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{4,}$"
+            let senhaValida = NSPredicate(format: "SELF MATCHES %@", senhaRegex)
+            passwordView.nextButton.isEnabled = senhaValida.evaluate(with: senha)
         } else {
-            passwordView.nextButton.isEnabled = true
-        }
+            passwordView.nextButton.isEnabled = false
+        } 
     }
+
     
     func didTapNextButton() {
         if let password = passwordView.passwordTextField.text {

@@ -56,10 +56,13 @@ class ConfirmPasswordViewController: UIViewController {
     }
 }
 
-extension ConfirmPasswordViewController: ConfirmPasswordViewDelegate {
+extension ConfirmPasswordViewController: ConfirmPasswordViewDelegate {    
     func verificaCampoConfirmarSenha() {
         if let confirmPassword = confirmPasswordView.confirmPasswordTextField.text {
-            confirmPasswordView.nextButton.isEnabled = !confirmPassword.isEmpty
+            // Verifica se a senha não está vazia e atende aos critérios mínimos de segurança
+            let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{4,}$"
+            let passwordValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+            confirmPasswordView.nextButton.isEnabled = passwordValid.evaluate(with: confirmPassword)
         } else {
             confirmPasswordView.nextButton.isEnabled = true
             confirmPasswordView.shakeFeedback(withDuration: 0.5)

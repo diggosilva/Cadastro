@@ -9,7 +9,8 @@ import UIKit
 
 class ConfirmPasswordViewController: UIViewController {
     
-    private let confirmPasswordView = ConfirmPasswordView()
+//    private let confirmPasswordView = ConfirmPasswordView()
+    private let confirmPasswordView = FormView(imageSystemName: "lock.fill", placeholder: "Digite novamente sua senha...", isSecureTextEntry: true)
     private let viewModel: ConfirmPasswordViewModel
     
     init(user: User) {
@@ -36,7 +37,7 @@ class ConfirmPasswordViewController: UIViewController {
         super.viewWillAppear(animated)
         if viewModel.user.confirmaSenha != "" {
             let confirmaSenha = viewModel.user.confirmaSenha
-            confirmPasswordView.confirmPasswordTextField.text = confirmaSenha
+            confirmPasswordView.formTextField.text = confirmaSenha
             confirmPasswordView.nextButton.isEnabled = true
             print("DEBUG: TEM DADO AQUI, a senha é \(confirmaSenha)")
         } else {
@@ -60,8 +61,8 @@ class ConfirmPasswordViewController: UIViewController {
     private func alertConfirmPassword() {
         let alert = UIAlertController(title: "⛔️ Atenção!", message: "Erro ao confirmar senha! \n Sua senha deve ser a mesma digitada anteriormente.", preferredStyle: .actionSheet)
         let ok = UIAlertAction(title: "Entendi", style: .default) { action in
-            self.confirmPasswordView.confirmPasswordTextField.text = ""
-            self.confirmPasswordView.confirmPasswordTextField.becomeFirstResponder()
+            self.confirmPasswordView.formTextField.text = ""
+            self.confirmPasswordView.formTextField.becomeFirstResponder()
             self.confirmPasswordView.nextButton.isEnabled = false
         }
         alert.addAction(ok)
@@ -69,9 +70,9 @@ class ConfirmPasswordViewController: UIViewController {
     }
 }
 
-extension ConfirmPasswordViewController: ConfirmPasswordViewDelegate {    
-    func verificaCampoConfirmarSenha() {
-        if let confirmPassword = confirmPasswordView.confirmPasswordTextField.text {
+extension ConfirmPasswordViewController: FormViewDelegate {
+    func verificaCampo() {
+        if let confirmPassword = confirmPasswordView.formTextField.text {
             // Verifica se a senha não está vazia e atende aos critérios mínimos de segurança
             let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{4,}$"
             let passwordValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
@@ -84,7 +85,7 @@ extension ConfirmPasswordViewController: ConfirmPasswordViewDelegate {
     }
     
     func didTapNextButton() {
-        if let confirmPassword = confirmPasswordView.confirmPasswordTextField.text {
+        if let confirmPassword = confirmPasswordView.formTextField.text {
             if confirmPassword == viewModel.user.senha {
                 viewModel.enviarEmailSenhaEConfirmarSenhaPraProximaTela(confirmaSenha: confirmPassword)
                 let nameVC = NameViewController(user: viewModel.user)

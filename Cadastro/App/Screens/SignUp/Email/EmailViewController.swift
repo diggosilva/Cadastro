@@ -9,7 +9,8 @@ import UIKit
 
 class EmailViewController: UIViewController {
     
-    private let emailView = EmailView()
+//    private let emailView = EmailView()
+    private let emailView = FormView(imageSystemName: "envelope", placeholder: "Digite seu email...")
     private let viewModel: EmailViewModel
     
     init(viewModel: EmailViewModel) {
@@ -45,9 +46,9 @@ class EmailViewController: UIViewController {
     }
 }
 
-extension EmailViewController: EmailViewDelegate {
-    func verificaCampoEmail() {
-        if let email = emailView.emailTextField.text {
+extension EmailViewController: FormViewDelegate {
+    func verificaCampo() {
+        if let email = emailView.formTextField.text {
             let emailWithoutWhiteSpaces = email.trimmingCharacters(in: .whitespaces)
             
             let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -60,7 +61,7 @@ extension EmailViewController: EmailViewDelegate {
     }
 
     func didTapNextButton() {
-        if let email = emailView.emailTextField.text {
+        if let email = emailView.formTextField.text {
             viewModel.enviarEmailPraProximaTela(email: email)
             let passwordVC = PasswordViewController(user: viewModel.user)
             navigationController?.pushViewController(passwordVC, animated: true)

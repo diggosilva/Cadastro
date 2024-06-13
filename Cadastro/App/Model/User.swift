@@ -7,7 +7,7 @@
 
 import Foundation
 
-class User {
+class User: Codable {
     var email: String = ""
     var senha: String = ""
     var confirmaSenha: String = ""

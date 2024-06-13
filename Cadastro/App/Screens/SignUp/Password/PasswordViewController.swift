@@ -9,7 +9,8 @@ import UIKit
 
 class PasswordViewController: UIViewController {
     
-    private let passwordView = PasswordView()
+//    private let passwordView = PasswordView()
+    private let passwordView = FormView(imageSystemName: "lock", placeholder: "Digite sua senha...", isSecureTextEntry: true)
     private let viewModel: PasswordViewModel
     
     init(user: User) {
@@ -36,7 +37,7 @@ class PasswordViewController: UIViewController {
         super.viewWillAppear(animated)
         if viewModel.user.senha != "" {
             let senha = viewModel.user.senha
-            passwordView.passwordTextField.text = senha
+            passwordView.formTextField.text = senha
             passwordView.nextButton.isEnabled = true
             print("DEBUG: TEM DADO AQUI, a senha é \(senha)")
         } else {
@@ -58,9 +59,9 @@ class PasswordViewController: UIViewController {
     }
 }
 
-extension PasswordViewController: PasswordViewDelegate {    
-    func verificaCampoSenha() {
-        if let password = passwordView.passwordTextField.text {
+extension PasswordViewController: FormViewDelegate {
+    func verificaCampo() {
+        if let password = passwordView.formTextField.text {
             // Verifica se a senha não está vazia e atende aos critérios mínimos de segurança
             let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{4,}$"
             let passwordValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
@@ -72,7 +73,7 @@ extension PasswordViewController: PasswordViewDelegate {
 
     
     func didTapNextButton() {
-        if let password = passwordView.passwordTextField.text {
+        if let password = passwordView.formTextField.text {
             viewModel.enviarEmailESenhaPraProximaTela(senha: password)
             let confirmPasswordVC = ConfirmPasswordViewController(user: viewModel.user)
             navigationController?.pushViewController(confirmPasswordVC, animated: true)

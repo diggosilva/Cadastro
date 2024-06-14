@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
         setNavBar()
         setDelegateAndDataSources()
         handleStates()
-        viewModel.loadData()
+//        viewModel.loginUser()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -55,33 +55,31 @@ class LoginViewController: UIViewController {
     }
     
     func showLoadedState() {
- 
+        print("DEBUG: SUCESSO! 🥳")
     }
     
     func showErrorState() {
-        
+        print("DEBUG: FALHA! 😥")
     }
 }
 
 extension LoginViewController: LoginViewDelegate {
+    func didTapLoginButton() {
+        viewModel.loginUser()
+    }
+    
     func verificaCamposDeEmailESenha() {
-        if let email = loginView.emailTextField.text, let password = loginView.passwordTextField.text {
-            // Validar o email usando uma expressão regular
-            let emailWithoutWhiteSpaces = email.trimmingCharacters(in: .whitespaces)
+        if let email = loginView.emailTextField.text, !email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+           let password = loginView.passwordTextField.text, !password.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             
-            let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-            let emailValid = NSPredicate(format:"SELF MATCHES %@", emailRegex)
-            
-            // Verifica se a senha não está vazia e atende aos critérios mínimos de segurança
-            let senhaRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{4,}$"
-            let senhaValid = NSPredicate(format: "SELF MATCHES %@", senhaRegex)
-            
-            // Habilitar o botão de login apenas se o email e a senha forem válidos
-            loginView.loginButton.isEnabled = emailValid.evaluate(with: emailWithoutWhiteSpaces) && senhaValid.evaluate(with: password)
+            viewModel.email = email.trimmingCharacters(in: .whitespacesAndNewlines)
+            viewModel.password = password.trimmingCharacters(in: .whitespacesAndNewlines)
+            loginView.loginButton.isEnabled = true
         } else {
             loginView.loginButton.isEnabled = false
         }
     }
+
     
     func naoTemConta() {
         let emailVM = EmailViewModel()

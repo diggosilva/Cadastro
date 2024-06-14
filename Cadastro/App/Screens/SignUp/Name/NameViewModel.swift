@@ -19,5 +19,7 @@ class NameViewModel {
         print("DEBUG: Nome foi cadastrado \(user.nome)")
         print("DEBUG: Objeto EMAIL: \(user.email), SENHA: \(user.senha), CONFIRMA SENHA: \(user.confirmaSenha), NOME: \(user.nome)")
         print("DEBUG: CADASTRO FINALIZADO COM SUCESSO!")
+        let repository = Repository()
+        repository.save(user: user)
     }
 }

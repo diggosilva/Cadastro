@@ -10,6 +10,7 @@ import UIKit
 protocol LoginViewDelegate: AnyObject {
     func verificaCamposDeEmailESenha()
     func naoTemConta()
+    func didTapLoginButton()
 }
 
 class LoginView: UIView {
@@ -78,6 +79,7 @@ class LoginView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Logar", for: .normal)
         button.isEnabled = false
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -100,6 +102,10 @@ class LoginView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func loginButtonTapped() {
+        delegate?.didTapLoginButton()
     }
     
     @objc func textFieldDidChange() {

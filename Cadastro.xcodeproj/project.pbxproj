@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		924F84ED2C1B77CF002C4441 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F84EC2C1B77CF002C4441 /* FormView.swift */; };
+		924F84EF2C1B98FB002C4441 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F84EE2C1B98FB002C4441 /* Repository.swift */; };
 		9251D4892C13627C0033863F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D4882C13627C0033863F /* User.swift */; };
 		9251D48B2C1362B50033863F /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D48A2C1362B50033863F /* EmailViewModel.swift */; };
 		9251D4912C138A8C0033863F /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D4902C138A8C0033863F /* PasswordViewController.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		924F84EC2C1B77CF002C4441 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		924F84EE2C1B98FB002C4441 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		9251D4882C13627C0033863F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9251D48A2C1362B50033863F /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
 		9251D4902C138A8C0033863F /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		927744692C121B7700895927 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				924F84EE2C1B98FB002C4441 /* Repository.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				927744642C1214EF00895927 /* Bindable.swift in Sources */,
 				927744622C12149A00895927 /* LoginViewModel.swift in Sources */,
 				927744512C1210CB00895927 /* LoginViewController.swift in Sources */,
+				924F84EF2C1B98FB002C4441 /* Repository.swift in Sources */,
 				92E6B0002C14C60B00B6DA19 /* NameViewController.swift in Sources */,
 				9277444D2C1210CB00895927 /* AppDelegate.swift in Sources */,
 				92E6B0042C14C63800B6DA19 /* NameViewModel.swift in Sources */,

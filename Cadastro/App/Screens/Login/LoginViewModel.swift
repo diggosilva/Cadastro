@@ -19,9 +19,23 @@ protocol LoginViewModelProtocol {
 
 class LoginViewModel {
     var state: Bindable<LoginViewControllerStates> = Bindable(value: .loading)
+    let repository = Repository()
+    var email: String = ""
+    var password: String = ""
+    var loggedInUser: User?
     
+    func checkIfUserExists() -> Bool {
+        loggedInUser = repository.getUser(email: email, password: password)
+        return loggedInUser != nil
+    }
     
-    func loadData() {
-     
+    func loginUser() {
+        if checkIfUserExists() {
+            state.value = .loaded
+            print("DEBUG: Você está logado!")
+        } else {
+            state.value = .error
+            print("DEBUG: Usuário não encontrado!")
+        }
     }
 }

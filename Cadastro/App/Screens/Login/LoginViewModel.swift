@@ -13,10 +13,6 @@ enum LoginViewControllerStates {
     case error
 }
 
-protocol LoginViewModelProtocol {
-    
-}
-
 class LoginViewModel {
     var state: Bindable<LoginViewControllerStates> = Bindable(value: .loading)
     let repository = Repository()

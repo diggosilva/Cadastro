@@ -13,6 +13,5 @@ class EmailViewModel {
     
     func enviarEmailPraProximaTela(email: String) {
         user.email = email
-        print("DEBUG: Email foi cadastrado: \(user.email)")
     }
 }

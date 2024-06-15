@@ -9,7 +9,6 @@ import UIKit
 
 class EmailViewController: UIViewController {
     
-//    private let emailView = EmailView()
     private let emailView = FormView(imageSystemName: "envelope", placeholder: "Digite seu email...")
     private let viewModel: EmailViewModel
     
@@ -53,7 +52,6 @@ extension EmailViewController: FormViewDelegate {
             
             let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
             let emailValid = NSPredicate(format:"SELF MATCHES %@", emailRegex)
-            
             emailView.nextButton.isEnabled = emailValid.evaluate(with: emailWithoutWhiteSpaces)
         } else {
             emailView.nextButton.isEnabled = false

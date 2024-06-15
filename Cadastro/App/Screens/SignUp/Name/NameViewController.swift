@@ -9,7 +9,7 @@ import UIKit
 
 class NameViewController: UIViewController {
     
-    private let nameView = NameView()
+    private let nameView = FormView(imageSystemName: "pencil.and.list.clipboard", placeholder: "Digite seu nome...", autocapitalizationType: .words)
     private let viewModel: NameViewModel
     
     init(user: User) {
@@ -54,19 +54,19 @@ class NameViewController: UIViewController {
     }
 }
 
-extension NameViewController: NameViewDelegate {
-    func verificaCampoNome() {
-        if let name = nameView.nameTextField.text {
+extension NameViewController: FormViewDelegate {
+    func verificaCampo() {
+        if let name = nameView.formTextField.text {
             let nameRegex = "^[a-zA-Z]+( [a-zA-Z]+)*$" // Expressão regular para verificar letras e espaços apenas entre palavras
             let nameValid = NSPredicate(format: "SELF MATCHES %@", nameRegex)
-            nameView.signUpButton.isEnabled = nameValid.evaluate(with: name)
+            nameView.nextButton.isEnabled = nameValid.evaluate(with: name)
         } else {
-            nameView.signUpButton.isEnabled = false
+            nameView.nextButton.isEnabled = false
         }
     }
     
-    func didTapSignUpButton() {
-        if let name = nameView.nameTextField.text {
+    func didTapNextButton() {
+        if let name = nameView.formTextField.text {
             viewModel.enviarEmailSenhaConfirmarSenhaENomePraProximaTela(nome: name)
             alertRegisteredSuccessfully()
         } else {

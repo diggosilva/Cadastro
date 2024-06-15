@@ -18,6 +18,7 @@ class FormView: UIView {
     private let imageSystemName: String
     private let placeholder: String
     private var isSecureTextEntry: Bool?
+    private var autocapitalizationType: UITextAutocapitalizationType?
     
     lazy var logoImage: UIImageView = {
         let image = UIImageView()
@@ -40,7 +41,7 @@ class FormView: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = placeholder
         textField.clearButtonMode = .whileEditing
-        textField.autocapitalizationType = .none
+        textField.autocapitalizationType = autocapitalizationType ?? .none
         textField.becomeFirstResponder()
         textField.isSecureTextEntry = isSecureTextEntry ?? false
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -75,12 +76,13 @@ class FormView: UIView {
     
     weak var delegate: FormViewDelegate?
     
-    init(imageSystemName: String, placeholder: String, showHasAccountButton: Bool = false, isSecureTextEntry: Bool? = false) {
+    init(imageSystemName: String, placeholder: String, showHasAccountButton: Bool = false, isSecureTextEntry: Bool? = false, autocapitalizationType: UITextAutocapitalizationType = .none) {
         self.imageSystemName = imageSystemName
         self.placeholder = placeholder
         super.init(frame: .zero)
         self.haveAnAccountButton.isHidden = !showHasAccountButton
         self.isSecureTextEntry = isSecureTextEntry
+        self.autocapitalizationType = autocapitalizationType
         setupView()
     }
     

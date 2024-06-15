@@ -22,7 +22,6 @@ class LoginViewController: UIViewController {
         setNavBar()
         setDelegateAndDataSources()
         handleStates()
-//        viewModel.loginUser()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -55,11 +54,37 @@ class LoginViewController: UIViewController {
     }
     
     func showLoadedState() {
-        print("DEBUG: SUCESSO! 🥳")
+        alertLoginSuccess()
     }
     
     func showErrorState() {
-        print("DEBUG: FALHA! 😥")
+        alertLoginError()
+    }
+    
+    func alertLoginSuccess() {
+        let alert = UIAlertController(title: "SEJA BEM-VINDO! 🥳", message: "Aproveite nosso app!", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default) { action in
+            print("DEBUG: Entrou no app")
+        }
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
+    
+    func alertLoginError() {
+        let alert = UIAlertController(title: "FALHA! 😥", message: "Email ou senha estão incorretos! \n Ou você ainda não se cadastrou!", preferredStyle: .alert)
+        let tryAgain = UIAlertAction(title: "Tentar novamente", style: .default) { action in
+            self.loginView.emailTextField.text = ""
+            self.loginView.passwordTextField.text = ""
+            self.loginView.emailTextField.resignFirstResponder()
+        }
+        let signUp = UIAlertAction(title: "Cadastrar agora", style: .default) { action in
+            self.loginView.emailTextField.text = ""
+            self.loginView.passwordTextField.text = ""
+            self.naoTemConta()
+        }
+        alert.addAction(tryAgain)
+        alert.addAction(signUp)
+        present(alert, animated: true)
     }
 }
 
@@ -80,7 +105,6 @@ extension LoginViewController: LoginViewDelegate {
         }
     }
 
-    
     func naoTemConta() {
         let emailVM = EmailViewModel()
         let emailVC = EmailViewController(viewModel: emailVM)

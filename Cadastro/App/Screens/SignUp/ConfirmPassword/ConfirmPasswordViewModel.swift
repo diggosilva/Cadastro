@@ -17,7 +17,6 @@ class ConfirmPasswordViewModel {
     func enviarEmailSenhaEConfirmarSenhaPraProximaTela(confirmaSenha: String) {
         if confirmaSenha == user.senha {
             user.confirmaSenha = confirmaSenha
-            print("DEBUG: Confirmação de Senha foi cadastrada: \(user.confirmaSenha)")
         } else {
             print("DEBUG: Erro ao confirmar senha: A senha deve ser a mesma que você digitou anteriormente")
         }

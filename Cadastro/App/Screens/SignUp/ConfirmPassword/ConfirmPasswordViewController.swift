@@ -9,7 +9,6 @@ import UIKit
 
 class ConfirmPasswordViewController: UIViewController {
     
-//    private let confirmPasswordView = ConfirmPasswordView()
     private let confirmPasswordView = FormView(imageSystemName: "lock.fill", placeholder: "Digite novamente sua senha...", isSecureTextEntry: true)
     private let viewModel: ConfirmPasswordViewModel
     
@@ -39,10 +38,9 @@ class ConfirmPasswordViewController: UIViewController {
             let confirmaSenha = viewModel.user.confirmaSenha
             confirmPasswordView.formTextField.text = confirmaSenha
             confirmPasswordView.nextButton.isEnabled = true
-            print("DEBUG: TEM DADO AQUI, a senha é \(confirmaSenha)")
+            // Caso usuário tenha confirmado uma senha e volte pra mudar o email, e senha cadastrada permanecerá a mesma, lembrando, se o usuário alterar a senha no passo anterior, esse campo também deve ser alterado para a mesma senha digitada anteriormente.
         } else {
             confirmPasswordView.nextButton.isEnabled = false
-            print("DEBUG: NÃO TEM DADO AQUI")
         }
     }
     

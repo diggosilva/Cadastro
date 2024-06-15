@@ -16,9 +16,7 @@ class NameViewModel {
     
     func enviarEmailSenhaConfirmarSenhaENomePraProximaTela(nome: String) {
         user.nome = nome
-        print("DEBUG: Nome foi cadastrado \(user.nome)")
-        print("DEBUG: Objeto EMAIL: \(user.email), SENHA: \(user.senha), CONFIRMA SENHA: \(user.confirmaSenha), NOME: \(user.nome)")
-        print("DEBUG: CADASTRO FINALIZADO COM SUCESSO!")
+        print("DEBUG: Usuário cadastrado -> EMAIL: \(user.email), SENHA: \(user.senha), CONFIRMA SENHA: \(user.confirmaSenha), NOME: \(user.nome)")
         let repository = Repository()
         repository.save(user: user)
     }

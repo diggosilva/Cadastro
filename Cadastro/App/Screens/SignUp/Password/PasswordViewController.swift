@@ -9,7 +9,6 @@ import UIKit
 
 class PasswordViewController: UIViewController {
     
-//    private let passwordView = PasswordView()
     private let passwordView = FormView(imageSystemName: "lock", placeholder: "Digite sua senha...", isSecureTextEntry: true)
     private let viewModel: PasswordViewModel
     
@@ -39,10 +38,9 @@ class PasswordViewController: UIViewController {
             let senha = viewModel.user.senha
             passwordView.formTextField.text = senha
             passwordView.nextButton.isEnabled = true
-            print("DEBUG: TEM DADO AQUI, a senha é \(senha)")
+            // Caso usuário tenha cadastrado uma senha e volte pra mudar o email, e senha cadastrada permanecerá aqui, tendo a possibilidade de passar por essa etapa, ou caso queira, alterar a senha registrada anteriormente.
         } else {
             passwordView.nextButton.isEnabled = false
-            print("DEBUG: NÃO TEM DADO AQUI")
         }
     }
     
@@ -71,7 +69,6 @@ extension PasswordViewController: FormViewDelegate {
         } 
     }
 
-    
     func didTapNextButton() {
         if let password = passwordView.formTextField.text {
             viewModel.enviarEmailESenhaPraProximaTela(senha: password)

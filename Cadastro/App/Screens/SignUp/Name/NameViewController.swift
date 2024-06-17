@@ -9,7 +9,7 @@ import UIKit
 
 class NameViewController: UIViewController {
     
-    private let nameView = FormView(imageSystemName: "pencil.and.list.clipboard", placeholder: "Digite seu nome...", autocapitalizationType: .words)
+    private let nameView = FormView(imageSystemName: "pencil.and.list.clipboard", placeholder: "Digite seu nome...", autocapitalizationType: .words, setTitle: "Finalizar Cadastro")
     private let viewModel: NameViewModel
     
     init(user: User) {

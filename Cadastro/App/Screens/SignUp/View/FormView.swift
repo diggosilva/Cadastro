@@ -19,6 +19,7 @@ class FormView: UIView {
     private let placeholder: String
     private var isSecureTextEntry: Bool?
     private var autocapitalizationType: UITextAutocapitalizationType?
+    private var setTitle: String
     
     lazy var logoImage: UIImageView = {
         let image = UIImageView()
@@ -58,7 +59,7 @@ class FormView: UIView {
     lazy var nextButton: UIButton = {
         let button = UIButton(configuration: .borderedTinted())
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Próximo", for: .normal)
+        button.setTitle(setTitle, for: .normal)
         button.isEnabled = false
         button.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         return button
@@ -76,9 +77,10 @@ class FormView: UIView {
     
     weak var delegate: FormViewDelegate?
     
-    init(imageSystemName: String, placeholder: String, showHasAccountButton: Bool = false, isSecureTextEntry: Bool? = false, autocapitalizationType: UITextAutocapitalizationType = .none) {
+    init(imageSystemName: String, placeholder: String, showHasAccountButton: Bool = false, isSecureTextEntry: Bool? = false, autocapitalizationType: UITextAutocapitalizationType = .none, setTitle: String? = "Próximo") {
         self.imageSystemName = imageSystemName
         self.placeholder = placeholder
+        self.setTitle = setTitle ?? ""
         super.init(frame: .zero)
         self.haveAnAccountButton.isHidden = !showHasAccountButton
         self.isSecureTextEntry = isSecureTextEntry

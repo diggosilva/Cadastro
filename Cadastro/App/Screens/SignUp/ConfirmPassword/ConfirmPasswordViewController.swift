@@ -77,7 +77,7 @@ extension ConfirmPasswordViewController: FormViewDelegate {
             confirmPasswordView.nextButton.isEnabled = passwordValid.evaluate(with: confirmPassword)
         } else {
             confirmPasswordView.nextButton.isEnabled = true
-            confirmPasswordView.shakeFeedback(withDuration: 0.5)
+            ShakeTextField.shakeFeedback(textField: confirmPasswordView.formTextField, icon: confirmPasswordView.icon)
             alertConfirmPassword()
         }
     }
@@ -90,7 +90,7 @@ extension ConfirmPasswordViewController: FormViewDelegate {
                 navigationController?.pushViewController(nameVC, animated: true)
             } else {
                 alertConfirmPassword()
-                confirmPasswordView.shakeFeedback()
+                ShakeTextField.shakeFeedback(textField: confirmPasswordView.formTextField, icon: confirmPasswordView.icon)
                 print("Falha ao cadastrar Confirmação de Senha!")
             }
         }

@@ -90,28 +90,6 @@ class FormView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func shakeFeedback(withDuration: CGFloat = 0.05) {
-        UIView.animate(withDuration: withDuration, animations: {
-            self.formTextField.transform = CGAffineTransform(translationX: 10, y: 0)
-            self.icon.transform = CGAffineTransform(translationX: 10, y: 0)
-        }, completion: { _ in
-            UIView.animate(withDuration: withDuration, animations: {
-                self.formTextField.transform = CGAffineTransform(translationX: -10, y: 0)
-                self.icon.transform = CGAffineTransform(translationX: -10, y: 0)
-            }, completion: { _ in
-                UIView.animate(withDuration: withDuration, animations: {
-                    self.formTextField.transform = CGAffineTransform(translationX: 5, y: 0)
-                    self.icon.transform = CGAffineTransform(translationX: 5, y: 0)
-                }, completion: { _ in
-                    UIView.animate(withDuration: withDuration, animations: {
-                        self.formTextField.transform = CGAffineTransform(translationX: 0, y: 0)
-                        self.icon.transform = CGAffineTransform(translationX: 0, y: 0)
-                    })
-                })
-            })
-        })
-    }
-    
     @objc private func textFieldDidChange() {
         delegate?.verificaCampo()
     }

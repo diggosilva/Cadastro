@@ -21,7 +21,7 @@ class LoginViewModel {
     var loggedInUser: User?
     
     func checkIfUserExists() -> Bool {
-        loggedInUser = repository.getUser(email: email, password: password)
+        loggedInUser = repository.getUser(email: email, senha: password)
         return loggedInUser != nil
     }
     

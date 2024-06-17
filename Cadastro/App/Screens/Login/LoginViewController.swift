@@ -75,7 +75,8 @@ class LoginViewController: UIViewController {
         let tryAgain = UIAlertAction(title: "Tentar novamente", style: .default) { action in
             self.loginView.emailTextField.text = ""
             self.loginView.passwordTextField.text = ""
-            self.loginView.emailTextField.resignFirstResponder()
+            self.loginView.emailTextField.becomeFirstResponder()
+            ShakeTextField.shakeFeedback(textField: self.loginView.emailTextField, icon: self.loginView.emailImage)
         }
         let signUp = UIAlertAction(title: "Cadastrar agora", style: .default) { action in
             self.loginView.emailTextField.text = ""

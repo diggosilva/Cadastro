@@ -9,14 +9,13 @@ import Foundation
 
 class NameViewModel {
     var user: User
+    let repository = Repository()
     
     init(user: User) {
         self.user = user
     }
     
     func enviarEmailSenhaConfirmarSenhaENomePraProximaTela(nome: String) {
-        user.nome = nome
-        print("DEBUG: Usuário cadastrado -> EMAIL: \(user.email), SENHA: \(user.senha), CONFIRMA SENHA: \(user.confirmaSenha), NOME: \(user.nome)")
         let repository = Repository()
         repository.save(user: user)
     }

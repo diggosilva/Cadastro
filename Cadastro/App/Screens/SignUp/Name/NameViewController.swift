@@ -52,6 +52,15 @@ class NameViewController: UIViewController {
         alert.addAction(ok)
         present(alert, animated: true)
     }
+    
+    private func alertRegisteredFailure() {
+        let alert = UIAlertController(title: "✋🏻 FALHA!", message: "Erro ao cadastrar email! \n Esse email já está sendo utilizado", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default) { action in
+            print("DEBUG: Cadastre novo email.")
+        }
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
 }
 
 extension NameViewController: FormViewDelegate {
@@ -70,6 +79,7 @@ extension NameViewController: FormViewDelegate {
             viewModel.enviarEmailSenhaConfirmarSenhaENomePraProximaTela(nome: name)
             alertRegisteredSuccessfully()
         } else {
+            alertRegisteredFailure()
             print("Falha ao cadastrar Nome!")
         }
     }

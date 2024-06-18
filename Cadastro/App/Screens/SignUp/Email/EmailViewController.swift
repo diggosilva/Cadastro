@@ -48,12 +48,21 @@ class EmailViewController: UIViewController {
 extension EmailViewController: FormViewDelegate {
     func verificaCampo() {
         if let email = emailView.formTextField.text {
-            let emailWithoutWhiteSpaces = email.trimmingCharacters(in: .whitespaces)
+            // Remove espaços em branco no início e no fim do email
+            let trimmedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
             
+            // Verifica se o email sem espaços em branco é válido com expressão regular
             let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
             let emailValid = NSPredicate(format:"SELF MATCHES %@", emailRegex)
-            emailView.nextButton.isEnabled = emailValid.evaluate(with: emailWithoutWhiteSpaces)
+            let isEmailValid = emailValid.evaluate(with: trimmedEmail)
+            
+            // Verifica se o email original é igual ao email sem espaços em branco
+            let isSameEmail = email == trimmedEmail
+            
+            // Atualiza o estado do botão com base na validade do email
+            emailView.nextButton.isEnabled = isEmailValid && isSameEmail
         } else {
+            // Se não houver texto no campo de email, desabilita o botão
             emailView.nextButton.isEnabled = false
         }
     }

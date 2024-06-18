@@ -8,8 +8,8 @@
 import Foundation
 
 class NameViewModel {
-    var user: User
-    let repository = Repository()
+    private var user: User
+    private let repository = Repository()
     
     init(user: User) {
         self.user = user

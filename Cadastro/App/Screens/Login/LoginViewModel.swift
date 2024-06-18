@@ -15,18 +15,23 @@ enum LoginViewControllerStates {
 
 class LoginViewModel {
     var state: Bindable<LoginViewControllerStates> = Bindable(value: .loading)
-    let repository = Repository()
     var email: String = ""
     var password: String = ""
-    var loggedInUser: User?
+    private let repository = Repository()
+    private var loggedInUser: User?
     
-    func checkIfUserExists() -> Bool {
-        loggedInUser = repository.getUser(email: email, senha: password)
-        return loggedInUser != nil
+    func areFieldsFilled() -> Bool {
+        return !email.isEmpty && !password.isEmpty
     }
     
     func loginUser() {
-        if checkIfUserExists() {
+        guard areFieldsFilled() else {
+            print("DEBUG: Campos inválidos.")
+            return
+        }
+        loggedInUser = repository.getUser(email: email, senha: password)
+        
+        if loggedInUser != nil {
             state.value = .loaded
             print("DEBUG: Você está logado!")
         } else {

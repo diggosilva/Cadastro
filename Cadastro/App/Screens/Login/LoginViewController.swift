@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
             self.loginView.emailTextField.text = ""
             self.loginView.passwordTextField.text = ""
             self.loginView.emailTextField.becomeFirstResponder()
-            ShakeTextField.shakeFeedback(textField: self.loginView.emailTextField, icon: self.loginView.emailImage)
+            ShakeTextField.shakeFeedback(textField: self.loginView.emailTextField, icon: self.loginView.emailImage, divider: self.loginView.divider1)
         }
         let signUp = UIAlertAction(title: "Cadastrar agora", style: .default) { action in
             self.loginView.emailTextField.text = ""

@@ -11,16 +11,22 @@ class Repository {
     let userDefaults = UserDefaults.standard
     let accessKey = "accessKey"
     
-    func save(user: User) {
+    func save(user: User, onSuccess: () -> Void, onError: () -> Void) {
         var userList = pegaListaDeUsuarios()
         
         let checkEmail = userList.contains(where: { $0.email == user.email })
+        
         if checkEmail {
             print("DEBUG: Este email já está sendo usado.")
+            print("DEBUG: Temos \(userList.count) usuários nessa lista")
+            onError()
             return
+        } else {
+            userList.append(user)
+            salvaListaDeUsuarios(userList: userList)
+            print("DEBUG: Temos \(userList.count) usuários nessa lista")
+            onSuccess()
         }
-        userList.append(user)
-        salvaListaDeUsuarios(userList: userList)
     }
     
     private func salvaListaDeUsuarios(userList: [User]) {

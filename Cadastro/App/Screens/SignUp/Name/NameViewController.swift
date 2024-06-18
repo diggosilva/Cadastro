@@ -30,6 +30,7 @@ class NameViewController: UIViewController {
         super.viewDidLoad()
         setNavBar()
         setDelegateAndDataSources()
+        verificaCampo()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -56,7 +57,7 @@ class NameViewController: UIViewController {
     private func alertRegisteredFailure() {
         let alert = UIAlertController(title: "✋🏻 FALHA!", message: "Erro ao cadastrar email! \n Esse email já está sendo utilizado", preferredStyle: .alert)
         let ok = UIAlertAction(title: "Ok", style: .default) { action in
-            print("DEBUG: Cadastre novo email.")
+            print("DEBUG: Tente usar outro email.")
         }
         alert.addAction(ok)
         present(alert, animated: true)
@@ -65,22 +66,27 @@ class NameViewController: UIViewController {
 
 extension NameViewController: FormViewDelegate {
     func verificaCampo() {
-        if let name = nameView.formTextField.text {
-            let nameRegex = "^[a-zA-Z]+( [a-zA-Z]+)*$" // Expressão regular para verificar letras e espaços apenas entre palavras
-            let nameValid = NSPredicate(format: "SELF MATCHES %@", nameRegex)
-            nameView.nextButton.isEnabled = nameValid.evaluate(with: name)
-        } else {
+        guard let nome = nameView.formTextField.text else {
             nameView.nextButton.isEnabled = false
+            return
         }
+        
+        let nomeValido = viewModel.validarNome(nome: nome)
+        nameView.nextButton.isEnabled = nomeValido
     }
     
     func didTapNextButton() {
-        if let name = nameView.formTextField.text {
-            viewModel.enviarEmailSenhaConfirmarSenhaENomePraProximaTela(nome: name)
-            alertRegisteredSuccessfully()
-        } else {
+        guard let name = nameView.formTextField.text else {
             alertRegisteredFailure()
-            print("Falha ao cadastrar Nome!")
+            print("Falha ao cadastrar nome")
+            return
+        }
+        viewModel.salvarDadosDoUsuario(nome: name) { [weak self] success in
+            if success {
+                self?.alertRegisteredSuccessfully()
+            } else {
+                self?.alertRegisteredFailure()
+            }
         }
     }
 }

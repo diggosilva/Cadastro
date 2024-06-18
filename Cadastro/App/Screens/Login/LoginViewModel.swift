@@ -31,7 +31,7 @@ class LoginViewModel {
             print("DEBUG: Você está logado!")
         } else {
             state.value = .error
-            print("DEBUG: Usuário não encontrado!")
+            print("DEBUG: Email ou senha estão incorretos, ou você não tem um cadastro!")
         }
     }
 }

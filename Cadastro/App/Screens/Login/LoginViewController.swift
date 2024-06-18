@@ -71,7 +71,7 @@ class LoginViewController: UIViewController {
     }
     
     func alertLoginError() {
-        let alert = UIAlertController(title: "FALHA! 😥", message: "Email ou senha estão incorretos! \n Ou você ainda não se cadastrou!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "FALHA! 😥", message: "Email ou senha estão incorretos! \n Ou você não tem um cadastro!", preferredStyle: .alert)
         let tryAgain = UIAlertAction(title: "Tentar novamente", style: .default) { action in
             self.loginView.emailTextField.text = ""
             self.loginView.passwordTextField.text = ""

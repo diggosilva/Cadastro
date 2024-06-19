@@ -9,7 +9,7 @@ import UIKit
 
 class EmailViewController: UIViewController {
     
-    private let emailView = FormView(imageSystemName: "envelope", placeholder: "Digite seu email...")
+    private let emailView = FormView(imageSystemName: "envelope", placeholder: "Digite seu email...", keyboardType: .emailAddress)
     private let viewModel: EmailViewModel
     
     init(viewModel: EmailViewModel) {

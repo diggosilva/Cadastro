@@ -21,7 +21,7 @@ class ConfirmPasswordViewModel {
         return confirmPassword == user.senha
     }
     
-    func enviarConfirmacaoSenhaPraProximaTela(confirmaSenha: String) {
+    func goToNextStep(confirmaSenha: String) {
         if isConfirmPasswordValid(confirmaSenha) {
             user.confirmaSenha = confirmaSenha
         } else {

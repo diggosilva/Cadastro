@@ -20,6 +20,7 @@ class FormView: UIView {
     private var isSecureTextEntry: Bool?
     private var autocapitalizationType: UITextAutocapitalizationType?
     private var setTitle: String
+    private var keyboardType: UIKeyboardType
     
     lazy var logoImage: UIImageView = {
         let image = UIImageView()
@@ -44,6 +45,7 @@ class FormView: UIView {
         textField.clearButtonMode = .whileEditing
         textField.autocapitalizationType = autocapitalizationType ?? .none
         textField.becomeFirstResponder()
+        textField.keyboardType = keyboardType
         textField.isSecureTextEntry = isSecureTextEntry ?? false
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
@@ -77,10 +79,11 @@ class FormView: UIView {
     
     weak var delegate: FormViewDelegate?
     
-    init(imageSystemName: String, placeholder: String, showHasAccountButton: Bool = false, isSecureTextEntry: Bool? = false, autocapitalizationType: UITextAutocapitalizationType = .none, setTitle: String? = "Próximo") {
+    init(imageSystemName: String, placeholder: String, showHasAccountButton: Bool = false, isSecureTextEntry: Bool? = false, autocapitalizationType: UITextAutocapitalizationType = .none, setTitle: String? = "Próximo", keyboardType: UIKeyboardType = .alphabet) {
         self.imageSystemName = imageSystemName
         self.placeholder = placeholder
         self.setTitle = setTitle ?? ""
+        self.keyboardType = keyboardType
         super.init(frame: .zero)
         self.haveAnAccountButton.isHidden = !showHasAccountButton
         self.isSecureTextEntry = isSecureTextEntry

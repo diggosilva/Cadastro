@@ -82,7 +82,7 @@ extension ConfirmPasswordViewController: FormViewDelegate {
         }
         
         if viewModel.isConfirmPasswordValid(confirmPassword) {
-            viewModel.enviarConfirmacaoSenhaPraProximaTela(confirmaSenha: confirmPassword)
+            viewModel.goToNextStep(confirmaSenha: confirmPassword)
             let nameVC = NameViewController(user: viewModel.user)
             navigationController?.pushViewController(nameVC, animated: true)
         } else {

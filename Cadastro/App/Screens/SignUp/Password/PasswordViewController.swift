@@ -59,23 +59,19 @@ class PasswordViewController: UIViewController {
 
 extension PasswordViewController: FormViewDelegate {
     func verificaCampo() {
-        if let password = passwordView.formTextField.text {
-            // Verifica se a senha não está vazia e atende aos critérios mínimos de segurança
-            let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{4,}$"
-            let passwordValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-            passwordView.nextButton.isEnabled = passwordValid.evaluate(with: password)
-        } else {
-            passwordView.nextButton.isEnabled = false
-        } 
+        let password = passwordView.formTextField.text
+        let isPasswordValid = viewModel.isPasswordValid(password)
+        passwordView.nextButton.isEnabled = isPasswordValid
     }
 
     func didTapNextButton() {
-        if let password = passwordView.formTextField.text {
-            viewModel.enviarEmailESenhaPraProximaTela(senha: password)
-            let confirmPasswordVC = ConfirmPasswordViewController(user: viewModel.user)
-            navigationController?.pushViewController(confirmPasswordVC, animated: true)
-        } else {
-            print("Falha ao cadastrar Senha!")
+        guard let password = passwordView.formTextField.text, viewModel.isPasswordValid(password) else {
+            print("Senha inválida")
+            return
         }
+        
+        viewModel.goToNextStep(senha: password)
+        let confirmPasswordVC = ConfirmPasswordViewController(user: viewModel.user)
+        navigationController?.pushViewController(confirmPasswordVC, animated: true)
     }
 }

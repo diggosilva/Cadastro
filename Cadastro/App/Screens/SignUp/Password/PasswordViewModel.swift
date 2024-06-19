@@ -14,7 +14,17 @@ class PasswordViewModel {
         self.user = user
     }
     
-    func enviarEmailESenhaPraProximaTela(senha: String) {
+    func isPasswordValid(_ password: String?) -> Bool {
+        guard let password = password else { return false }
+        
+        // Verifica se a senha não está vazia e atende aos critérios mínimos de segurança
+        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{4,}$"
+        let passwordValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        
+        return passwordValid.evaluate(with: password)
+    }
+    
+    func goToNextStep(senha: String) {
         user.senha = senha
     }
 }

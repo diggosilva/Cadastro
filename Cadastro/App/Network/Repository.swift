@@ -11,6 +11,26 @@ class Repository {
     let userDefaults = UserDefaults.standard
     let accessKey = "accessKey"
     
+    private func pegaListaDeUsuarios() -> [User] {
+        guard let data = userDefaults.object(forKey: accessKey) as? Data else { return [] }
+        do {
+            let userList = try JSONDecoder().decode([User].self, from: data)
+            return userList
+        } catch {
+            print("DEBUG: Erro ao decodificar usuário: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    private func salvaListaDeUsuarios(userList: [User]) {
+        do {
+            let data = try JSONEncoder().encode(userList)
+            userDefaults.set(data, forKey: accessKey)
+        } catch {
+            print("DEBUG: Erro ao codificar usuário: \(error.localizedDescription)")
+        }
+    }
+    
     func save(user: User, onSuccess: () -> Void, onError: () -> Void) {
         var userList = pegaListaDeUsuarios()
         
@@ -26,26 +46,6 @@ class Repository {
             salvaListaDeUsuarios(userList: userList)
             print("DEBUG: Temos \(userList.count) usuários nessa lista")
             onSuccess()
-        }
-    }
-    
-    private func salvaListaDeUsuarios(userList: [User]) {
-        do {
-            let data = try JSONEncoder().encode(userList)
-            userDefaults.set(data, forKey: accessKey)
-        } catch {
-            print("DEBUG: Erro ao codificar usuário: \(error.localizedDescription)")
-        }
-    }
-    
-    private func pegaListaDeUsuarios() -> [User] {
-        guard let data = userDefaults.object(forKey: accessKey) as? Data else { return [] }
-        do {
-            let userList = try JSONDecoder().decode([User].self, from: data)
-            return userList
-        } catch {
-            print("DEBUG: Erro ao decodificar usuário: \(error.localizedDescription)")
-            return []
         }
     }
     

@@ -47,34 +47,20 @@ class EmailViewController: UIViewController {
 
 extension EmailViewController: FormViewDelegate {
     func verificaCampo() {
-        if let email = emailView.formTextField.text {
-            // Remove espaços em branco no início e no fim do email
-            let trimmedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-            // Verifica se o email sem espaços em branco é válido com expressão regular
-            let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-            let emailValid = NSPredicate(format:"SELF MATCHES %@", emailRegex)
-            let isEmailValid = emailValid.evaluate(with: trimmedEmail)
-            
-            // Verifica se o email original é igual ao email sem espaços em branco
-            let isSameEmail = email == trimmedEmail
-            
-            // Atualiza o estado do botão com base na validade do email
-            emailView.nextButton.isEnabled = isEmailValid && isSameEmail
-        } else {
-            // Se não houver texto no campo de email, desabilita o botão
-            emailView.nextButton.isEnabled = false
-        }
+        let email = emailView.formTextField.text
+        let isEmailValid = viewModel.isValidEmail(email)
+        emailView.nextButton.isEnabled = isEmailValid
     }
-
+    
     func didTapNextButton() {
-        if let email = emailView.formTextField.text {
-            viewModel.enviarEmailPraProximaTela(email: email)
-            let passwordVC = PasswordViewController(user: viewModel.user)
-            navigationController?.pushViewController(passwordVC, animated: true)
-        } else {
-            print("Falha ao cadastrar email!")
+        guard let email = emailView.formTextField.text, viewModel.isValidEmail(email) else {
+            print("Email inválido")
+            return
         }
+        
+        viewModel.goToNextStep(email: email)
+        let passwordVC = PasswordViewController(user: viewModel.user)
+        navigationController?.pushViewController(passwordVC, animated: true)
     }
     
     func jaTemConta() {

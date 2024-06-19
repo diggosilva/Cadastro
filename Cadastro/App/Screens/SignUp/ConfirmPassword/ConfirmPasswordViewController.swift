@@ -70,29 +70,25 @@ class ConfirmPasswordViewController: UIViewController {
 
 extension ConfirmPasswordViewController: FormViewDelegate {
     func verificaCampo() {
-        if let confirmPassword = confirmPasswordView.formTextField.text {
-            // Verifica se a senha não está vazia e atende aos critérios mínimos de segurança
-            let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{4,}$"
-            let passwordValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-            confirmPasswordView.nextButton.isEnabled = passwordValid.evaluate(with: confirmPassword)
-        } else {
-            confirmPasswordView.nextButton.isEnabled = true
-            ShakeTextField.shakeFeedback(textField: confirmPasswordView.formTextField, icon: confirmPasswordView.icon, divider: confirmPasswordView.divider1)
-            alertConfirmPassword()
-        }
+        let confirmPassword = confirmPasswordView.formTextField.text
+        let isConfirmPasswordValid = viewModel.isConfirmPasswordValid(confirmPassword)
+        confirmPasswordView.nextButton.isEnabled = isConfirmPasswordValid
     }
     
     func didTapNextButton() {
-        if let confirmPassword = confirmPasswordView.formTextField.text {
-            if confirmPassword == viewModel.user.senha {
-                viewModel.enviarEmailSenhaEConfirmarSenhaPraProximaTela(confirmaSenha: confirmPassword)
-                let nameVC = NameViewController(user: viewModel.user)
-                navigationController?.pushViewController(nameVC, animated: true)
-            } else {
-                alertConfirmPassword()
-                ShakeTextField.shakeFeedback(textField: confirmPasswordView.formTextField, icon: confirmPasswordView.icon, divider: confirmPasswordView.divider1)
-                print("Falha ao cadastrar Confirmação de Senha!")
-            }
+        guard let confirmPassword = confirmPasswordView.formTextField.text else {
+            print("Erro: Confirmação de senha não pode ser vazia.")
+            return
+        }
+        
+        if viewModel.isConfirmPasswordValid(confirmPassword) {
+            viewModel.enviarConfirmacaoSenhaPraProximaTela(confirmaSenha: confirmPassword)
+            let nameVC = NameViewController(user: viewModel.user)
+            navigationController?.pushViewController(nameVC, animated: true)
+        } else {
+            alertConfirmPassword()
+            ShakeTextField.shakeFeedback(textField: confirmPasswordView.formTextField, icon: confirmPasswordView.icon, divider: confirmPasswordView.divider1)
+            print("Falha ao cadastrar Confirmação de Senha!")
         }
     }
 }

@@ -14,8 +14,15 @@ class ConfirmPasswordViewModel {
         self.user = user
     }
     
-    func enviarEmailSenhaEConfirmarSenhaPraProximaTela(confirmaSenha: String) {
-        if confirmaSenha == user.senha {
+    func isConfirmPasswordValid(_ confirmPassword: String?) -> Bool {
+        guard let confirmPassword = confirmPassword else { return false }
+        
+        // Verifica se a confirmação de senha é igual à senha original
+        return confirmPassword == user.senha
+    }
+    
+    func enviarConfirmacaoSenhaPraProximaTela(confirmaSenha: String) {
+        if isConfirmPasswordValid(confirmaSenha) {
             user.confirmaSenha = confirmaSenha
         } else {
             print("DEBUG: Erro ao confirmar senha: A senha deve ser a mesma que você digitou anteriormente")

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92312EA02C244B46000241C4 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92312E9F2C244B46000241C4 /* FeedViewController.swift */; };
+		92312EA22C244B4F000241C4 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92312EA12C244B4F000241C4 /* FeedView.swift */; };
+		92312EA42C244B5A000241C4 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92312EA32C244B5A000241C4 /* FeedViewModel.swift */; };
+		92312EA62C245963000241C4 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92312EA52C245963000241C4 /* FeedCell.swift */; };
 		924F84ED2C1B77CF002C4441 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F84EC2C1B77CF002C4441 /* FormView.swift */; };
 		924F84EF2C1B98FB002C4441 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F84EE2C1B98FB002C4441 /* Repository.swift */; };
 		9251D4892C13627C0033863F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D4882C13627C0033863F /* User.swift */; };
@@ -30,6 +34,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92312E9F2C244B46000241C4 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		92312EA12C244B4F000241C4 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		92312EA32C244B5A000241C4 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		92312EA52C245963000241C4 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		924F84EC2C1B77CF002C4441 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		924F84EE2C1B98FB002C4441 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		9251D4882C13627C0033863F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -65,12 +73,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		924F84EB2C1B77C2002C4441 /* View */ = {
+		92312E9E2C244B25000241C4 /* FeedPokemon */ = {
+			isa = PBXGroup;
+			children = (
+				92312E9F2C244B46000241C4 /* FeedViewController.swift */,
+				92312EA12C244B4F000241C4 /* FeedView.swift */,
+				92312EA52C245963000241C4 /* FeedCell.swift */,
+				92312EA32C244B5A000241C4 /* FeedViewModel.swift */,
+			);
+			path = FeedPokemon;
+			sourceTree = "<group>";
+		};
+		924F84EB2C1B77C2002C4441 /* FormView */ = {
 			isa = PBXGroup;
 			children = (
 				924F84EC2C1B77CF002C4441 /* FormView.swift */,
 			);
-			path = View;
+			path = FormView;
 			sourceTree = "<group>";
 		};
 		9251D4872C1361660033863F /* Email */ = {
@@ -170,6 +189,7 @@
 		927744672C121B7400895927 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				92312E9E2C244B25000241C4 /* FeedPokemon */,
 				927744662C121B7200895927 /* Login */,
 				927744722C12457600895927 /* SignUp */,
 			);
@@ -204,7 +224,7 @@
 		927744722C12457600895927 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				924F84EB2C1B77C2002C4441 /* View */,
+				924F84EB2C1B77C2002C4441 /* FormView */,
 				9251D4872C1361660033863F /* Email */,
 				9251D48C2C13873B0033863F /* Password */,
 				9251D4962C13A94B0033863F /* ConfirmPassword */,
@@ -283,10 +303,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92312EA22C244B4F000241C4 /* FeedView.swift in Sources */,
 				9251D4A02C13AA6A0033863F /* ConfirmPasswordViewModel.swift in Sources */,
 				9277446F2C121BEA00895927 /* LoginView.swift in Sources */,
 				927744642C1214EF00895927 /* Bindable.swift in Sources */,
 				927744622C12149A00895927 /* LoginViewModel.swift in Sources */,
+				92312EA02C244B46000241C4 /* FeedViewController.swift in Sources */,
 				927744512C1210CB00895927 /* LoginViewController.swift in Sources */,
 				924F84EF2C1B98FB002C4441 /* Repository.swift in Sources */,
 				92E6B0002C14C60B00B6DA19 /* NameViewController.swift in Sources */,
@@ -295,6 +317,8 @@
 				927744772C12471700895927 /* EmailViewController.swift in Sources */,
 				9251D4892C13627C0033863F /* User.swift in Sources */,
 				924F84ED2C1B77CF002C4441 /* FormView.swift in Sources */,
+				92312EA42C244B5A000241C4 /* FeedViewModel.swift in Sources */,
+				92312EA62C245963000241C4 /* FeedCell.swift in Sources */,
 				9251D4952C138BA20033863F /* PasswordViewModel.swift in Sources */,
 				9251D49C2C13A9F20033863F /* ConfirmPasswordViewController.swift in Sources */,
 				9251D48B2C1362B50033863F /* EmailViewModel.swift in Sources */,

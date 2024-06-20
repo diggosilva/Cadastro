@@ -22,7 +22,7 @@ class FeedViewController: UIViewController {
         setNavBar()
         setDelegatesAndDataSources()
         handleStates()
-        viewModel.loadData()
+        viewModel.loadDataPokemon()
     }
     
     private func setNavBar() {
@@ -48,27 +48,37 @@ class FeedViewController: UIViewController {
     }
     
     private func showLoadingState() {
-        
+        feedView.removeFromSuperview()
     }
     
     private func showLoadedState() {
-     
+        feedView.spinner.stopAnimating()
+        feedView.collectionView.reloadData()
     }
     
     private func showErrorState() {
-        
+        let alert = UIAlertController(title: "Opa, ocorreu um erro!", message: "Tentar novamente?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Sim", style: .default) { action in
+            self.viewModel.loadDataPokemon()
+        }
+        let nok = UIAlertAction(title: "Não", style: .cancel) { action in
+            self.feedView.spinner.stopAnimating()
+            self.feedView.errorLabel.isHidden = false
+        }
+        alert.addAction(ok)
+        alert.addAction(nok)
+        present(alert, animated: true)
     }
 }
 
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return viewModel.numberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .systemRed
-        cell.layer.cornerRadius = 10
+        cell.configure(pokemon: viewModel.cellForRowAt(indexPath: indexPath))
         return cell
     }
 }

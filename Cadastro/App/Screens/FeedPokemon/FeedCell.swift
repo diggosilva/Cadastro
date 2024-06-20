@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FeedCell: UICollectionViewCell {
     static let identifier = "FeedCell"
@@ -39,6 +40,14 @@ class FeedCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(pokemon: FeedModel) {
+        guard let url = URL(string: pokemon.imageUrl) else { return }
+        pokemonImage.sd_setImage(with: url)
+        nameLabel.text = pokemon.name
+        self.backgroundColor = .systemRed.withAlphaComponent(0.25)
+        self.layer.cornerRadius = 10
     }
     
     private func setupView() {

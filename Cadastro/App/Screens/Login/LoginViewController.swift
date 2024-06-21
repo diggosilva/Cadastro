@@ -64,7 +64,8 @@ class LoginViewController: UIViewController {
     func alertLoginSuccess() {
         let alert = UIAlertController(title: "SEJA BEM-VINDO! 🥳", message: "Aproveite nosso app!", preferredStyle: .alert)
         let ok = UIAlertAction(title: "Ok", style: .default) { action in
-            print("DEBUG: Entrou no app")
+            let feedVC = FeedViewController()
+            self.navigationController?.pushViewController(feedVC, animated: true)
         }
         alert.addAction(ok)
         present(alert, animated: true)
@@ -79,9 +80,14 @@ class LoginViewController: UIViewController {
             ShakeTextField.shakeFeedback(textField: self.loginView.emailTextField, icon: self.loginView.emailImage, divider: self.loginView.divider1)
         }
         let signUp = UIAlertAction(title: "Cadastrar agora", style: .default) { action in
+            let emailVM = EmailViewModel()
+            let emailVC = EmailViewController(viewModel: emailVM)
+            emailVC.emailView.formTextField.text = self.loginView.emailTextField.text
+            self.navigationController?.pushViewController(emailVC, animated: true)
+          
             self.loginView.emailTextField.text = ""
             self.loginView.passwordTextField.text = ""
-            self.naoTemConta()
+            self.loginView.loginButton.isEnabled = false
         }
         alert.addAction(tryAgain)
         alert.addAction(signUp)

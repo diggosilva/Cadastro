@@ -15,20 +15,12 @@ class FeedView: UIView {
         return spinner
     }()
     
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        let widthScreen = (UIScreen.main.bounds.width - 40) / 3
-        layout.itemSize = CGSize(width: widthScreen, height: 100)
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: FeedCell.identifier)
-        collectionView.backgroundColor = .secondarySystemBackground
-        collectionView.alwaysBounceVertical = true
-        return collectionView
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(FeedCell.self, forCellReuseIdentifier: FeedCell.identifier)
+        tableView.backgroundColor = .secondarySystemBackground
+        return tableView
     }()
     
     lazy var errorLabel: UILabel = {
@@ -58,7 +50,7 @@ class FeedView: UIView {
     
     private func setHierarchy () {
         backgroundColor = .systemBackground
-        addSubviews([collectionView, spinner, errorLabel])
+        addSubviews([tableView, spinner, errorLabel])
     }
     
     private func setConstraints() {
@@ -69,10 +61,10 @@ class FeedView: UIView {
             errorLabel.centerXAnchor.constraint(equalTo: spinner.centerXAnchor),
             errorLabel.topAnchor.constraint(equalTo: spinner.bottomAnchor, constant: 10),
             
-            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 }

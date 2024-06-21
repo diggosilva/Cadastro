@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct FeedModel {
+struct Pokemon {
     let name: String
     let url: String
+    var isSelected: Bool = false
     
     var imageUrl: String {
         return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(getId).png"

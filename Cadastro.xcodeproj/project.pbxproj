@@ -12,8 +12,8 @@
 		92312EA42C244B5A000241C4 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92312EA32C244B5A000241C4 /* FeedViewModel.swift */; };
 		92312EA62C245963000241C4 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92312EA52C245963000241C4 /* FeedCell.swift */; };
 		92312EA82C245ED1000241C4 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92312EA72C245ED1000241C4 /* Service.swift */; };
-		92312EAC2C245FCD000241C4 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92312EAB2C245FCD000241C4 /* FeedModel.swift */; };
-		92312EAE2C245FD5000241C4 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92312EAD2C245FD5000241C4 /* FeedResponse.swift */; };
+		92312EAC2C245FCD000241C4 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92312EAB2C245FCD000241C4 /* Pokemon.swift */; };
+		92312EAE2C245FD5000241C4 /* PokemonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92312EAD2C245FD5000241C4 /* PokemonResponse.swift */; };
 		924F84ED2C1B77CF002C4441 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F84EC2C1B77CF002C4441 /* FormView.swift */; };
 		924F84EF2C1B98FB002C4441 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F84EE2C1B98FB002C4441 /* Repository.swift */; };
 		9251D4892C13627C0033863F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251D4882C13627C0033863F /* User.swift */; };
@@ -45,8 +45,8 @@
 		92312EA32C244B5A000241C4 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		92312EA52C245963000241C4 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		92312EA72C245ED1000241C4 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		92312EAB2C245FCD000241C4 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
-		92312EAD2C245FD5000241C4 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
+		92312EAB2C245FCD000241C4 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		92312EAD2C245FD5000241C4 /* PokemonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonResponse.swift; sourceTree = "<group>"; };
 		924F84EC2C1B77CF002C4441 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		924F84EE2C1B98FB002C4441 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		9251D4882C13627C0033863F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -106,8 +106,8 @@
 		92312EAA2C245F5F000241C4 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				92312EAB2C245FCD000241C4 /* FeedModel.swift */,
-				92312EAD2C245FD5000241C4 /* FeedResponse.swift */,
+				92312EAB2C245FCD000241C4 /* Pokemon.swift */,
+				92312EAD2C245FD5000241C4 /* PokemonResponse.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -402,9 +402,9 @@
 				9277446F2C121BEA00895927 /* LoginView.swift in Sources */,
 				927744642C1214EF00895927 /* Bindable.swift in Sources */,
 				927744622C12149A00895927 /* LoginViewModel.swift in Sources */,
-				92312EAE2C245FD5000241C4 /* FeedResponse.swift in Sources */,
+				92312EAE2C245FD5000241C4 /* PokemonResponse.swift in Sources */,
 				92312EA02C244B46000241C4 /* FeedViewController.swift in Sources */,
-				92312EAC2C245FCD000241C4 /* FeedModel.swift in Sources */,
+				92312EAC2C245FCD000241C4 /* Pokemon.swift in Sources */,
 				927744512C1210CB00895927 /* LoginViewController.swift in Sources */,
 				924F84EF2C1B98FB002C4441 /* Repository.swift in Sources */,
 				92E6B0002C14C60B00B6DA19 /* NameViewController.swift in Sources */,

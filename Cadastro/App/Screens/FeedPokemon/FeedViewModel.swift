@@ -8,8 +8,8 @@
 import Foundation
 
 protocol FeedViewModelProtocol {
-    func numberOfItemsInSection() -> Int
-    func cellForRowAt(indexPath: IndexPath) -> FeedModel
+    func numberOfRowsInSection() -> Int
+    func cellForRowAt(indexPath: IndexPath) -> Pokemon
     func loadDataPokemon()
 }
 
@@ -22,14 +22,19 @@ enum FeedViewControllerStates {
 class FeedViewModel: FeedViewModelProtocol {
     private (set) var state: Bindable<FeedViewControllerStates> = Bindable(value: .loading)
     private var service: ServiceProtocol = Service()
-    var pokemonList: [FeedModel] = []
+    var pokemonList: [Pokemon] = []
+    var isSelected = false
     
-    func numberOfItemsInSection() -> Int {
+    func numberOfRowsInSection() -> Int {
         return pokemonList.count
     }
     
-    func cellForRowAt(indexPath: IndexPath) -> FeedModel {
+    func cellForRowAt(indexPath: IndexPath) -> Pokemon {
         return pokemonList[indexPath.row]
+    }
+    
+    func didSelectRowAt(indexPath: IndexPath) {
+        pokemonList[indexPath.row].isSelected.toggle()
     }
     
     func loadDataPokemon() {

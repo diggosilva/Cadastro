@@ -30,8 +30,8 @@ class FeedViewController: UIViewController {
     }
     
     private func setDelegatesAndDataSources() {
-        feedView.collectionView.delegate = self
-        feedView.collectionView.dataSource = self
+        feedView.tableView.delegate = self
+        feedView.tableView.dataSource = self
     }
     
     private func handleStates() {
@@ -53,7 +53,7 @@ class FeedViewController: UIViewController {
     
     private func showLoadedState() {
         feedView.spinner.stopAnimating()
-        feedView.collectionView.reloadData()
+        feedView.tableView.reloadData()
     }
     
     private func showErrorState() {
@@ -71,14 +71,20 @@ class FeedViewController: UIViewController {
     }
 }
 
-extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfItemsInSection()
+extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRowsInSection()
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell else { return UICollectionViewCell() }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier, for: indexPath) as? FeedCell else { return UITableViewCell() }
         cell.configure(pokemon: viewModel.cellForRowAt(indexPath: indexPath))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pokemon = viewModel.cellForRowAt(indexPath: indexPath)
+        viewModel.didSelectRowAt(indexPath: indexPath)
+        tableView.reloadData()
     }
 }

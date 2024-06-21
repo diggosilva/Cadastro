@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FeedResponse: Codable {
+struct PokemonResponse: Codable {
     let next: String?
     let results: [NameURLModel]
     

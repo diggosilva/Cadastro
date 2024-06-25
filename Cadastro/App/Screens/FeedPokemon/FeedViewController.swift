@@ -10,7 +10,16 @@ import UIKit
 class FeedViewController: UIViewController {
     
     private let feedView = FeedView()
-    private let viewModel = FeedViewModel()
+    private let viewModel: FeedViewModel
+    
+    init(viewModel: FeedViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         super.loadView()
@@ -83,8 +92,7 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let pokemon = viewModel.cellForRowAt(indexPath: indexPath)
-        viewModel.didSelectRowAt(indexPath: indexPath)
+        let pokemon = viewModel.didSelectRowAt(indexPath: indexPath)
         tableView.reloadData()
     }
 }

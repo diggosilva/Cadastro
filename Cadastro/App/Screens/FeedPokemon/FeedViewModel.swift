@@ -21,9 +21,14 @@ enum FeedViewControllerStates {
 
 class FeedViewModel: FeedViewModelProtocol {
     private (set) var state: Bindable<FeedViewControllerStates> = Bindable(value: .loading)
-    private var service: ServiceProtocol = Service()
+    private var service: ServiceProtocol
+    private var user: User
     var pokemonList: [Pokemon] = []
-    var isSelected = false
+    
+    init(service: ServiceProtocol, user: User) {
+        self.service = service
+        self.user = user
+    }
     
     func numberOfRowsInSection() -> Int {
         return pokemonList.count
@@ -34,7 +39,14 @@ class FeedViewModel: FeedViewModelProtocol {
     }
     
     func didSelectRowAt(indexPath: IndexPath) {
-        pokemonList[indexPath.row].isSelected.toggle()
+        var pokemon = pokemonList[indexPath.row]
+        pokemon.isFavorited.toggle()
+        
+        if pokemon.isFavorited == true {
+            user.favoritePokemons.append(pokemon.getId)
+        } else {
+            user.favoritePokemons.removeAll(where: { $0 == pokemon.getId })
+        }
     }
     
     func loadDataPokemon() {
@@ -44,6 +56,14 @@ class FeedViewModel: FeedViewModelProtocol {
     func fetchRequest(url: String) {
         service.getPokemons(url: url) { pokemons in
             self.pokemonList = pokemons
+            
+            for pokemon in self.pokemonList {
+                if self.user.favoritePokemons.contains(pokemon.getId) {
+                    var pokemon = pokemon
+                    pokemon.isFavorited = true
+                }
+            }
+            
             self.state.value = .loaded
         } onError: { error in
             self.state.value = .error

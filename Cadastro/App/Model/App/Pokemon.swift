@@ -10,7 +10,7 @@ import Foundation
 struct Pokemon {
     let name: String
     let url: String
-    var isSelected: Bool = false
+    var isFavorited: Bool = false
     
     var imageUrl: String {
         return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(getId).png"
@@ -24,5 +24,9 @@ struct Pokemon {
         var id = url.components(separatedBy: "https://pokeapi.co/api/v2/pokemon/").last ?? ""
         id = String(id.dropLast())
         return Int(id) ?? 0
+    }
+    
+    func seiLa(isFavorited: Bool) {
+        
     }
 }

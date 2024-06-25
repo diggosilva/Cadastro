@@ -8,17 +8,17 @@
 import Foundation
 
 enum LoginViewControllerStates {
-    case loading
-    case loaded
+    case waitingLog
+    case logged(User)
     case error
 }
 
 class LoginViewModel {
-    var state: Bindable<LoginViewControllerStates> = Bindable(value: .loading)
+    var state: Bindable<LoginViewControllerStates> = Bindable(value: .waitingLog)
     var email: String = ""
     var password: String = ""
     private let repository = Repository()
-    private var loggedInUser: User?
+    var loggedInUser: User?
     
     func areFieldsFilled() -> Bool {
         return !email.isEmpty && !password.isEmpty
@@ -31,8 +31,10 @@ class LoginViewModel {
         }
         loggedInUser = repository.getUser(email: email, senha: password)
         
+        guard let logUser = loggedInUser else { return }
+        
         if loggedInUser != nil {
-            state.value = .loaded
+            state.value = .logged(logUser)
             print("DEBUG: Você está logado!")
         } else {
             state.value = .error

@@ -45,7 +45,7 @@ class FeedCell: UITableViewCell {
         nameLabel.text = pokemon.name.capitalized
         
         self.accessoryType = UITableViewCell.AccessoryType.none
-        self.accessoryType = pokemon.isSelected ? .checkmark : .none
+        self.accessoryType = pokemon.isFavorited ? .checkmark : .none
     }
     
     private func setupView() {

@@ -60,31 +60,33 @@ class LoginViewController: UIViewController {
     }
     
     func showErrorState() {
-        //        alertLoginError()
+        alertLoginError()
     }
     
-    //    func alertLoginError() {
-    //        let alert = UIAlertController(title: "FALHA! 😥", message: "Email ou senha estão incorretos! \n Ou você não tem um cadastro!", preferredStyle: .alert)
-    //        let tryAgain = UIAlertAction(title: "Tentar novamente", style: .default) { action in
-    //            self.loginView.emailTextField.text = ""
-    //            self.loginView.passwordTextField.text = ""
-    //            self.loginView.emailTextField.becomeFirstResponder()
-    //            ShakeTextField.shakeFeedback(textField: self.loginView.emailTextField, icon: self.loginView.emailImage, divider: self.loginView.divider1)
-    //        }
-    //        let signUp = UIAlertAction(title: "Cadastrar agora", style: .default) { action in
-    //            let emailVM = EmailViewModel()
-    //            let emailVC = EmailViewController(viewModel: emailVM)
-    //            emailVC.emailView.formTextField.text = self.loginView.emailTextField.text
-    //            self.navigationController?.pushViewController(emailVC, animated: true)
-    //
-    //            self.loginView.emailTextField.text = ""
-    //            self.loginView.passwordTextField.text = ""
-    //            self.loginView.loginButton.isEnabled = false
-    //        }
-    //        alert.addAction(tryAgain)
-    //        alert.addAction(signUp)
-    //        present(alert, animated: true)
-    //    }
+    func alertLoginError() {
+        let alert = UIAlertController(title: "FALHA! 😥", message: "Email ou senha estão incorretos! \n Ou você não tem um cadastro!", preferredStyle: .alert)
+        let tryAgain = UIAlertAction(title: "Tentar novamente", style: .default) { action in
+            self.loginView.emailTextField.text = ""
+            self.loginView.passwordTextField.text = ""
+            self.loginView.emailTextField.becomeFirstResponder()
+            ShakeTextField.shakeFeedback(textField: self.loginView.emailTextField, icon: self.loginView.emailImage, divider: self.loginView.divider1)
+        }
+        let signUp = UIAlertAction(title: "Cadastrar agora", style: .default) { action in
+            let user: User = User()
+            let emailVM = EmailViewModel(user: user)
+            let emailVC = EmailViewController(viewModel: emailVM)
+            emailVC.emailView.formTextField.text = self.loginView.emailTextField.text
+            emailVC.emailView.nextButton.isEnabled = true
+            self.navigationController?.pushViewController(emailVC, animated: true)
+            
+            self.loginView.emailTextField.text = ""
+            self.loginView.passwordTextField.text = ""
+            self.loginView.loginButton.isEnabled = false
+        }
+        alert.addAction(tryAgain)
+        alert.addAction(signUp)
+        present(alert, animated: true)
+    }
 }
 
 extension LoginViewController: LoginViewDelegate {
@@ -105,7 +107,7 @@ extension LoginViewController: LoginViewDelegate {
     }
     
     func naoTemConta() {
-        let user = User(from: <#Decoder#>)
+        let user = User()
         let emailVM = EmailViewModel(user: user)
         let emailVC = EmailViewController(viewModel: emailVM)
         navigationController?.pushViewController(emailVC, animated: true)

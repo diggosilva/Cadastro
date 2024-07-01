@@ -23,4 +23,13 @@ class User: Codable, Equatable {
     var nome: String = ""
     var favoritePokemons: [Int] = []
     var id: Int
+    
+    init(email: String = "", senha: String = "", confirmaSenha: String = "", nome: String = "", favoritePokemons: [Int] = [], id: Int = 0) {
+        self.email = email
+        self.senha = senha
+        self.confirmaSenha = confirmaSenha
+        self.nome = nome
+        self.favoritePokemons = favoritePokemons
+        self.id = id
+    }
 }

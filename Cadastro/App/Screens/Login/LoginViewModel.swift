@@ -31,14 +31,12 @@ class LoginViewModel {
         }
         loggedInUser = repository.getUser(email: email, senha: password)
         
-        guard let logUser = loggedInUser else { return }
-        
-        if loggedInUser != nil {
-            state.value = .logged(logUser)
-            print("DEBUG: Você está logado!")
-        } else {
+        guard let logUser = loggedInUser else {
             state.value = .error
             print("DEBUG: Email ou senha estão incorretos, ou você não tem um cadastro!")
+            return
         }
+        state.value = .logged(logUser)
+        print("DEBUG: Você está logado!")
     }
 }

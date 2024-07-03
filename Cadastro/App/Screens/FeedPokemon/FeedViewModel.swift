@@ -20,14 +20,16 @@ enum FeedViewControllerStates {
 }
 
 class FeedViewModel: FeedViewModelProtocol {
-    private (set) var state: Bindable<FeedViewControllerStates> = Bindable(value: .loading)
+    private(set) var state: Bindable<FeedViewControllerStates> = Bindable(value: .loading)
     private var service: ServiceProtocol
-    private var user: User
+    private let user: User
+    private let repository: Repository
     var pokemonList: [Pokemon] = []
     
-    init(service: ServiceProtocol, user: User) {
+    init(service: ServiceProtocol, user: User, repository: Repository) {
         self.service = service
         self.user = user
+        self.repository = repository
     }
     
     func numberOfRowsInSection() -> Int {
@@ -41,12 +43,15 @@ class FeedViewModel: FeedViewModelProtocol {
     func didSelectRowAt(indexPath: IndexPath) {
         var pokemon = pokemonList[indexPath.row]
         pokemon.isFavorited.toggle()
+        pokemonList[indexPath.row] = pokemon // Atualiza a lista com o novo estado
         
-        if pokemon.isFavorited == true {
+        if pokemon.isFavorited {
             user.favoritePokemons.append(pokemon.getId)
         } else {
             user.favoritePokemons.removeAll(where: { $0 == pokemon.getId })
         }
+        
+        repository.updateUser(user: user)
     }
     
     func loadDataPokemon() {
@@ -57,13 +62,11 @@ class FeedViewModel: FeedViewModelProtocol {
         service.getPokemons(url: url) { pokemons in
             self.pokemonList = pokemons
             
-            for pokemon in self.pokemonList {
-                if self.user.favoritePokemons.contains(pokemon.getId) {
-                    var pokemon = pokemon
-                    pokemon.isFavorited = true
+            for index in self.pokemonList.indices {
+                if self.user.favoritePokemons.contains(self.pokemonList[index].getId) {
+                    self.pokemonList[index].isFavorited = true
                 }
             }
-            
             self.state.value = .loaded
         } onError: { error in
             self.state.value = .error

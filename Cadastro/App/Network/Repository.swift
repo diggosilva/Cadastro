@@ -57,9 +57,11 @@ class Repository {
     }
     
     func updateUser(user: User) {
-        let usuarioRecebido = user
-        let userSaved = users.first(where: { user == $0 })
-        userSaved?.favoritePokemons = usuarioRecebido.favoritePokemons
-//        salvaListaDeUsuarios(userList: [userSaved])
+        var userList = pegaListaDeUsuarios()
+        
+        if let index = userList.firstIndex(where: { $0.email == user.email }) {
+            userList[index] = user
+            salvaListaDeUsuarios(userList: userList)
+        }
     }
 }

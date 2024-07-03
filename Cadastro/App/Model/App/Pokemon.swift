@@ -7,10 +7,15 @@
 
 import Foundation
 
-struct Pokemon {
+class Pokemon {
     let name: String
     let url: String
     var isFavorited: Bool = false
+    
+    init(name: String, url: String) {
+        self.name = name
+        self.url = url
+    }
     
     var imageUrl: String {
         return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(getId).png"

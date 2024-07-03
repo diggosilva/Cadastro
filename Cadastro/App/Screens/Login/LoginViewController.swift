@@ -54,7 +54,8 @@ class LoginViewController: UIViewController {
     }
     
     func showLoggedState(_ logUser: User) {
-        let feedVM = FeedViewModel(service: Service(), user: logUser)
+        let repository = Repository()
+        let feedVM = FeedViewModel(service: Service(), user: logUser, repository: repository)
         let feedVC = FeedViewController(viewModel: feedVM)
         self.navigationController?.pushViewController(feedVC, animated: true)
     }

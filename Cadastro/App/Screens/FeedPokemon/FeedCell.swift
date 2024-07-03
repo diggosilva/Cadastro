@@ -44,7 +44,6 @@ class FeedCell: UITableViewCell {
         pokemonImage.sd_setImage(with: url)
         nameLabel.text = pokemon.name.capitalized
         
-        self.accessoryType = UITableViewCell.AccessoryType.none
         self.accessoryType = pokemon.isFavorited ? .checkmark : .none
     }
     

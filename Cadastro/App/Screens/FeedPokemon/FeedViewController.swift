@@ -92,7 +92,10 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let pokemon = viewModel.didSelectRowAt(indexPath: indexPath)
-        tableView.reloadData()
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.didSelectRowAt(indexPath: indexPath)
+        if let cell = tableView.cellForRow(at: indexPath) as? FeedCell {
+            cell.configure(pokemon: viewModel.cellForRowAt(indexPath: indexPath))
+        }
     }
 }

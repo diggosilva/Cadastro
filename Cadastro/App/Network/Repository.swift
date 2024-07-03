@@ -10,6 +10,7 @@ import Foundation
 class Repository {
     let userDefaults = UserDefaults.standard
     let accessKey = "accessKey"
+    var users: [User] = [User]()
     
     private func pegaListaDeUsuarios() -> [User] {
         guard let data = userDefaults.object(forKey: accessKey) as? Data else { return [] }
@@ -53,5 +54,14 @@ class Repository {
         let userList = pegaListaDeUsuarios()
         let checkUser = userList.first(where: { $0.email == email && $0.senha == senha })
         return checkUser
+    }
+    
+    func updateUser(user: User) {
+        var userList = pegaListaDeUsuarios()
+        
+        if let index = userList.firstIndex(where: { $0.email == user.email }) {
+            userList[index] = user
+            salvaListaDeUsuarios(userList: userList)
+        }
     }
 }

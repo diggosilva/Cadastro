@@ -9,7 +9,7 @@ import UIKit
 
 class ConfirmPasswordViewController: UIViewController {
     
-    private let confirmPasswordView = FormView(imageSystemName: "lock.fill", placeholder: "Digite novamente sua senha...", isSecureTextEntry: true)
+    private let confirmPasswordView = FormView(imageSystemName: "lock", placeholder: "Digite novamente sua senha...", isSecureTextEntry: true)
     private let viewModel: ConfirmPasswordViewModel
     
     init(user: User) {

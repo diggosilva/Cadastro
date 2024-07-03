@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
         super.loadView()
         view = loginView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavBar()
@@ -39,35 +39,29 @@ class LoginViewController: UIViewController {
     func handleStates() {
         viewModel.state.bind { states in
             switch states {
-            case .loading:
-                return self.showLoadingState()
-            case .loaded:
-                return self.showLoadedState()
+            case .waitingLog:
+                return self.showWaitingLogState()
+            case .logged(let logUser):
+                return self.showLoggedState(logUser)
             case .error:
                 return self.showErrorState()
             }
         }
     }
     
-    func showLoadingState() {
+    func showWaitingLogState() {
         
     }
     
-    func showLoadedState() {
-        alertLoginSuccess()
+    func showLoggedState(_ logUser: User) {
+        let repository = Repository()
+        let feedVM = FeedViewModel(service: Service(), user: logUser, repository: repository)
+        let feedVC = FeedViewController(viewModel: feedVM)
+        self.navigationController?.pushViewController(feedVC, animated: true)
     }
     
     func showErrorState() {
         alertLoginError()
-    }
-    
-    func alertLoginSuccess() {
-        let alert = UIAlertController(title: "SEJA BEM-VINDO! 🥳", message: "Aproveite nosso app!", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Ok", style: .default) { action in
-            print("DEBUG: Entrou no app")
-        }
-        alert.addAction(ok)
-        present(alert, animated: true)
     }
     
     func alertLoginError() {
@@ -79,9 +73,16 @@ class LoginViewController: UIViewController {
             ShakeTextField.shakeFeedback(textField: self.loginView.emailTextField, icon: self.loginView.emailImage, divider: self.loginView.divider1)
         }
         let signUp = UIAlertAction(title: "Cadastrar agora", style: .default) { action in
+            let user: User = User()
+            let emailVM = EmailViewModel(user: user)
+            let emailVC = EmailViewController(viewModel: emailVM)
+            emailVC.emailView.formTextField.text = self.loginView.emailTextField.text
+            emailVC.emailView.nextButton.isEnabled = true
+            self.navigationController?.pushViewController(emailVC, animated: true)
+            
             self.loginView.emailTextField.text = ""
             self.loginView.passwordTextField.text = ""
-            self.naoTemConta()
+            self.loginView.loginButton.isEnabled = false
         }
         alert.addAction(tryAgain)
         alert.addAction(signUp)
@@ -105,9 +106,10 @@ extension LoginViewController: LoginViewDelegate {
             loginView.loginButton.isEnabled = false
         }
     }
-
+    
     func naoTemConta() {
-        let emailVM = EmailViewModel()
+        let user = User()
+        let emailVM = EmailViewModel(user: user)
         let emailVC = EmailViewController(viewModel: emailVM)
         navigationController?.pushViewController(emailVC, animated: true)
     }

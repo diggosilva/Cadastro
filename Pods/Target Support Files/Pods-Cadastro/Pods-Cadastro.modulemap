@@ -1,0 +1,6 @@
+framework module Pods_Cadastro {
+  umbrella header "Pods-Cadastro-umbrella.h"
+
+  export *
+  module * { export * }
+}

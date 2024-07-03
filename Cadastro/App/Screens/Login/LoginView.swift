@@ -25,7 +25,7 @@ class LoginView: UIView {
     lazy var emailImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "envelope")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+        image.image = UIImage(systemName: "envelope.fill")?.withTintColor(.label, renderingMode: .alwaysOriginal)
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -52,7 +52,7 @@ class LoginView: UIView {
     lazy var passwordImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "lock")?.withTintColor(.label, renderingMode: .alwaysOriginal)
+        image.image = UIImage(systemName: "lock.fill")?.withTintColor(.label, renderingMode: .alwaysOriginal)
         image.contentMode = .scaleAspectFit
         return image
     }()

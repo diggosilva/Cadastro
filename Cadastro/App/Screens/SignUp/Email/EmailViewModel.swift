@@ -8,7 +8,11 @@
 import Foundation
 
 class EmailViewModel {
-    var user = User()
+    var user: User
+    
+    init(user: User) {
+        self.user = user
+    }
     
     func isValidEmail(_ email: String?) -> Bool {
         guard let email = email else { return false }

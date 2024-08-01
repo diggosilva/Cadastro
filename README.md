@@ -35,7 +35,7 @@ An iOS application written in Swift, for user registrations, this application re
 ## Functionalities
 - [x] User Registration
 - [x] Login Screen
-- [x] Registratiton Screen
+- [x] Registration Screen
 - [x] List of Pokemon, favorites when clicking on the cell
 - [x] Saving data using userDefaults
 
